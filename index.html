@@ -4,271 +4,54 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<title>Pizza POS System</title>
-
+<title>MASTER KURT FOODHUB</title>
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
-
-body {
-    background: #111;
-    color: white;
-    height: 100vh;
-    overflow: hidden;
-}
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+body { background:#111; color:white; height:100vh; overflow:hidden; }
 
 /* HEADER */
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    z-index: 1000;
-    background: black;
-    padding: 10px 0;
-    border-bottom: 1px solid black;
-}
-
-.brand {
-    max-width: 100%;
-    overflow: hidden;
-}
-
-.categories {
-    display: flex;
-    gap: 10px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 10px;
-}
-
-.categories::-webkit-scrollbar {
-    display: none;
-}
-
-.category {
-    flex: 0 0 auto;
-    padding: 10px 20px;
-    background: #2a2a2a;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-    width: 100px;
-    text-align: center;
-}
-
-.category.active,
-.category:hover {
-    background: orange;
-    color: black;
-}
+.header { position:fixed; top:0; left:0; right:0; height:60px; z-index:1000; background:black; padding:10px 0; border-bottom:1px solid black; }
+.brand { max-width:100%; overflow:hidden; }
+.categories { display:flex; gap:10px; overflow-x:auto; scroll-behavior:smooth; -webkit-overflow-scrolling:touch; padding:0 10px; }
+.categories::-webkit-scrollbar { display:none; }
+.category { flex:0 0 auto; padding:10px 20px; background:#2a2a2a; border-radius:20px; cursor:pointer; transition:0.3s; width:100px; text-align:center; }
+.category.active, .category:hover { background:orange; color:black; }
 
 /* MAIN */
-.main-wrapper {
-    display: flex;
-    margin-top: 70px;
-    height: calc(100vh - 70px);
-}
-
-.sidebar {
-    width: 80px;
-    background: #1a1a1a;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px 0;
-}
-
-.sidebar div {
-    margin: 20px 0;
-    font-size: 22px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.sidebar div:hover {
-    transform: scale(1.2);
-}
-
-.container {
-    flex: 1;
-    display: flex;
-}
+.main-wrapper { display:flex; margin-top:70px; height:calc(100vh - 70px); }
+.sidebar { width:80px; background:#1a1a1a; display:flex; flex-direction:column; align-items:center; padding:20px 0; }
+.sidebar div { margin:20px 0; font-size:22px; cursor:pointer; transition:0.3s; }
+.sidebar div:hover { transform:scale(1.2); }
+.container { flex:1; display:flex; }
 
 /* PRODUCTS */
-.products-section {
-    flex: 3;
-    padding: 20px;
-    overflow-y: auto;
-}
-
-.products {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 5px;
-}
-
-.card {
-    background: gray;
-    border-radius: 5px;
-    padding: 5px;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-}
-
-.card img {
-    width: 100%;
-    height: 100px;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.card h5 {
-    margin: 1px 0;
-}
-
-.card p {
-    font-weight: bold;
-    color: orange;
-}
-
-.card i {
-    font-size: 25px;
-    cursor: pointer;
-}
+.products-section { flex:3; padding:20px; overflow-y:auto; }
+.products { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:5px; }
+.card { background:gray; border-radius:5px; padding:5px; transition:0.3s; }
+.card:hover { transform:translateY(-5px); }
+.card img { width:100%; height:100px; object-fit:cover; border-radius:5px; }
+.card h5 { margin:1px 0; }
+.card p { font-weight:bold; color:orange; }
+.card i { font-size:25px; cursor:pointer; }
 
 /* CART */
-.cart {
-    flex: 1;
-    background: #1a1a1a;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-	max-height: 650px;
-	min-height: 649px;
-}
-
-.cart-items {
-    flex: 1;
-    overflow-y: auto;
-	
-}
-
-.cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 5px;
-    background: #2a2a2a;
-    padding: 10px;
-    border-radius: 8px;
-}
-
-.qty-control {
-    display: flex;
-    gap: 5px;
-    align-items: center;
-}
-
-.qty-control button {
-    background: orange;
-    border: none;
-    width: 25px;
-    height: 25px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-.summary {
-    margin-top: 15px;
-    border-top: 1px solid #444;
-    padding-top: 10px;
-}
-
-.summary div {
-    display: flex;
-    justify-content: space-between;
-    margin: 5px 0;
-}
-
-.checkout-btn {
-    background: orange;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 10px;
-    font-weight: bold;
-}
-
-/* PAYMENT */
-.payment {
-
-    flex: 1;
-    background: #1a1a1a;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.payment-total {
-    text-align: center;
-    margin: 30px 0;
-}
-
-.payment-total h1 {
-    color: orange;
-}
-
-.payment-methods {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    margin-bottom: 20px;
-}
-
-.payment-methods button {
-    padding: 12px 20px;
-    background: #2a2a2a;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    cursor: pointer;
-    font-weight: bold;
-	width:100%;
-	
-}
-
-.payment-methods button.active {
-    background: orange;
-    color: black;
-	width: 100%;
-}
-
-.back-btn,
-.confirm-btn {
-    background: orange;
-    padding: 10px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 10px;
-    font-weight: bold;
-	width:100%;
-}
-
-.back-btn { background: gray; }
-.confirm-btn { background: orange; }
+.cart { flex:1; background:#1a1a1a; padding:10px; display:flex; flex-direction:column; max-height:650px; min-height:649px; }
+.cart-items { flex:1; overflow-y:auto; }
+.cart-item { display:flex; justify-content:space-between; align-items:center; margin-bottom:5px; background:#2a2a2a; padding:10px; border-radius:8px; }
+.qty-control { display:flex; gap:5px; align-items:center; }
+.qty-control button { background:orange; border:none; width:25px; height:25px; border-radius:5px; cursor:pointer; font-weight:bold; }
+.summary { margin-top:15px; border-top:1px solid #444; padding-top:10px; }
+.summary div { display:flex; justify-content:space-between; margin:5px 0; }
+.checkout-btn { background:orange; padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; }
+.payment { flex:1; background:#1a1a1a; padding:20px; display:flex; flex-direction:column; }
+.payment-total { text-align:center; margin:30px 0; }
+.payment-total h1 { color:orange; }
+.payment-methods { display:flex; gap:10px; justify-content:center; margin-bottom:20px; }
+.payment-methods button { padding:12px 20px; background:#2a2a2a; border:none; border-radius:8px; color:white; cursor:pointer; font-weight:bold; width:100%; }
+.payment-methods button.active { background:orange; color:black; width:100%; }
+.back-btn, .confirm-btn { background:orange; padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%; }
+.back-btn { background:gray; }
+.confirm-btn { background:orange; }
 
 /* Responsive */
 @media(max-width:768px){
@@ -280,83 +63,18 @@ body {
 }
 
 /* Bottom Navigation Bar */
-.navbar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 62px;
-    background: #161b22;
-    border-top: 1px solid #2a2f38;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    z-index: 999;
-}
+.navbar { position:fixed; bottom:0; left:0; right:0; height:62px; background:#161b22; border-top:1px solid #2a2f38; display:flex; justify-content:space-around; align-items:center; z-index:999; }
+.nav-item { text-align:center; color:#8b95a1; font-size:0.75rem; flex:1; padding-top:6px; text-decoration:none; transition:color 0.2s, font-weight 0.2s; cursor:pointer; }
+.nav-item span { display:block; font-size:1.2rem; margin-bottom:3px; transition: transform 0.2s; }
+.nav-item:hover span { transform:scale(1.1); }
+.nav-item.active { color:#58a6ff; font-weight:bold; text-decoration:underline; }
+.nav-item.active span { transform:scale(1.9); }
 
-/* Navigation Item */
-.nav-item {
-    text-align: center;
-    color: var(--muted, #8b95a1);
-    font-size: 0.75rem;
-    flex: 1;
-    padding-top: 6px;
-    text-decoration: none;
-    transition: color 0.2s, font-weight 0.2s;
-    cursor: pointer;
-}
+.modal { display:none; position:fixed; z-index:999; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,0.6);}
+.modal-content { background:black; margin-top:50px; margin-left:15px; width:100%; height:100%; overflow-y:auto; align-items:center; }
+.close { float:right; font-size:25px; cursor:pointer; color:black; }
 
-/* Icon or span inside nav item */
-.nav-item span {
-    display: block;
-    font-size: 1.2rem;
-    margin-bottom: 3px;
-    transition: transform 0.2s;
-}
-
-.nav-item:hover span {
-    transform: scale(1.1);
-}
-
-/* Active nav item */
-.nav-item.active {
-    color: var(--accent, #58a6ff);
-    font-weight: bold;
-    text-decoration: underline; 
-}
-
-.nav-item.active span {
-    transform: scale(1.9); 
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
- 
-}
-
-.modal-content {
-  background: BLACK;
-  margin-top: 50px;
-  margin-left: 15PX;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  align-items:center;
-}
-
-.close {
-  float: right;
-  font-size: 25px;
-  cursor: pointer;
-  color: BLACK;
-}
+button.active{background:orange;color:black;}
 </style>
 </head>
 
@@ -379,44 +97,25 @@ body {
 
 <div class="main-wrapper">
 <div class="container">
-
 <div class="products-section">
 <div class="products" id="productList"></div>
 </div>
 </div>
-<br>
-<br>
-<br>
+<br><br><br>
 </div>
 
 <nav class="navbar">
-  <a href="https://masterkurt.pages.dev/" class="nav-item" onclick="openModal('homeModal')">
-    🏠 HOME
-  </a>
-
-  <a href="#" class="nav-item" onclick="openModal('logsModal')">
-    📄 VIEW CART
-  </a>
-
-  <a href="#" class="nav-item" onclick="PaymentModal()">
-  
-    ⚙️ PAY NOW
-  </a>
-
-   <a href="https://masterkurt.pages.dev/" class="nav-item" onclick="openModal('homeModal')">
-    📊 CANCEL
-  </a>
-<!--
-  <a href="#" class="nav-item" onclick="openModal('reportModal')">
-    📝 Report
-  </a>-->
+  <a href="https://masterkurt.pages.dev/" class="nav-item" onclick="openModal('homeModal')">🏠 HOME</a>
+  <a href="#" class="nav-item" onclick="openModal('logsModal')">📄 VIEW CART</a>
+  <a href="#" class="nav-item" onclick="PaymentModal()">⚙️ PAY NOW</a>
+  <a href="https://masterkurt.pages.dev/" class="nav-item" onclick="openModal('homeModal')">📊 CANCEL</a>
 </nav>
 
-<!-- LOGS MODAL -->
+<!-- CART MODAL -->
 <div id="logsModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('logsModal')">&times;</span>
-    <div class="cart">
+<div class="modal-content">
+<span class="close" onclick="closeModal('logsModal')">&times;</span>
+<div class="cart">
 <h2>Cart</h2>
 <div class="cart-items" id="cartItems"></div>
 <div class="summary">
@@ -424,21 +123,46 @@ body {
 <div><span>Discount</span><span id="tax">₱0.00</span></div>
 <div><strong>Total</strong><strong id="total">₱0.00</strong></div>
 </div>
-
 <button class="checkout-btn" onclick="PaymentModal()">Proceed</button>
 <button class="back-btn" onclick="closeModal('logsModal')">Menu</button>
-
 </div>
 </div>
 </div>
 
 <!-- PAYMENT MODAL -->
 <div id="PaymentModal" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('PaymentModal')">&times;</span>
-<div class="payment" id="paymentSection" style="display:none;">
-<h2>Payment Option</h2>
+<div class="modal-content">
+<span class="close" onclick="closeModal('PaymentModal')">&times;</span>
+<div class="payment" id="paymentSection" style="display:none; flex-direction:column;">
 
+<h2>Order Type</h2>
+<div id="orderTypeOptions" style="display:flex;flex-direction:column;gap:10px;margin-bottom:15px;">
+<button onclick="selectOrderType('TakeOut',event)">🥡 Take Out</button>
+<button onclick="selectOrderType('DineIn',event)">🍽️ Dine In</button>
+<button onclick="selectOrderType('Delivery',event)">🛵 Delivery</button>
+</div>
+
+<!-- Take Out Input -->
+<div id="takeOutInput" style="display:none;">
+<label>Nickname :</label>
+<input id="nicknameInput" type="text" style="width:100%;padding:10px;border-radius:6px;border:none;margin-top:5px;">
+</div>
+
+<!-- Dine In Input -->
+<div id="dineInput" style="display:none;">
+<label>Table Number (1-10)</label>
+<input id="tableInput" type="number" min="1" max="10" style="width:100%;padding:10px;border-radius:6px;border:none;margin-top:5px;">
+</div>
+
+<!-- Delivery Input -->
+<div id="deliveryInput" style="display:none;">
+<label>Mobile Number</label>
+<input id="mobileInput" type="tel" placeholder="09XXXXXXXXX" style="width:100%;padding:10px;border-radius:6px;border:none;margin-top:5px;">
+</div>
+<br>
+<br>
+
+<h2>Payment Option</h2>
 <div class="payment-methods">
 <button onclick="selectPayment('Cash', event)">💵 Cash</button>
 <button onclick="selectPayment('Card', event)">💳 Card</button>
@@ -451,8 +175,7 @@ body {
 
 <div id="cashForm" style="display:none; margin-top:20px;">
 <label><b>Cash Received:</b></label>
-<input type="number" id="cashInput" 
-style="width: 80px; padding:8px;margin-top:5px;border-radius:6px;border:none;">
+<input type="number" id="cashInput" style="width: 80px; padding:8px;margin-top:5px;border-radius:6px;border:none;">
 <div style="margin-top:10px;">
 <strong>Change: <span id="changeAmount">₱0.00</span></strong>
 </div>
@@ -461,24 +184,22 @@ style="width: 80px; padding:8px;margin-top:5px;border-radius:6px;border:none;">
 <div id="cardQR" style="display:none; text-align:center; margin-top:20px;">
 <p>Scan QR to Pay</p>
 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PizzaPOSPayment" width="200">
+
 <br><br>
-<button onclick="simulateCardPayment()" 
-style="padding:10px 20px;background:orange;border:none;border-radius:8px;cursor:pointer;width: 100%;">
-I've Paid Via Card
-</button>
+<button onclick="simulateCardPayment()" style="padding:10px 20px;background:orange;border:none;border-radius:8px;cursor:pointer;width: 100%;">I've Paid Via Card</button>
 </div>
+
 <div class="payment-actions">
 <button class="confirm-btn" onclick="confirmCashPayment()">Confirm Payment</button>
 <button class="back-btn" onclick="goBack()">⬅ Back</button>
 </div>
 </div>
-  </div>
+</div>
 </div>
 
 <script>
-/* ================= PRODUCTS ================= */
-const TAX_RATE = 0.00; // 5% tax
-
+// ================= VARIABLES =================
+const TAX_RATE = 0.00;
 const products = [
   { id: 1, name: "Clasik Margerit", price: 12.99, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/img/ClassicMargherita.jpeg?raw=true" },
   { id: 2, name: "Hawaiian Pizza", price: 13.99, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/img/HawaiianPizza.jpg?raw=true" },
@@ -510,580 +231,177 @@ let cart = [];
 let selectedPaymentMethod = "";
 let finalTotal = 0;
 let currentCategory = "All";
+let selectedOrderType = "";
+let orderExtraInfo = "";
 
-/* ================= RENDER PRODUCTS ================= */
-function renderProducts(list) {
-    const container = document.getElementById("productList");
-    container.innerHTML = list.map(product => {
-        const cartItem = cart.find(item => item.id === product.id);
-        const qty = cartItem ? cartItem.qty : 0;
-        return `
-        <div class="card">
-            <img src="${product.image}" alt="${product.name}">
-            <h5>${product.name}</h5>
-            <div style="display:flex;justify-content:space-between;align-items:center;">
-                <p>₱${product.price.toFixed(2)}</p>
-                ${
-                    qty === 0
-                    ? `<i class="fas fa-shopping-cart"
-                          style="cursor:pointer;font-size:22px;"
-                          onclick="addToCart(${product.id})"></i>`
-                    : `
-                    <div style="display:flex;align-items:center;gap:5px;">
-                        <button onclick="changeQty(${product.id}, -1)"
-                            style="width:22px;height:22px;border:none;border-radius:5px;background:orange;font-weight:bold;">-</button>
-                        <span style="min-width:20px;text-align:center;">${qty}</span>
-                        <button onclick="changeQty(${product.id}, 1)"
-                            style="width:22px;height:22px;border:none;border-radius:5px;background:orange;font-weight:bold;">+</button>
-                    </div>
-                    `
-                }
-            </div>
-        </div>
-        `;
-    }).join("");
+// ================= RENDER PRODUCTS =================
+function renderProducts(list){
+  const container=document.getElementById("productList");
+  container.innerHTML=list.map(p=>{ const item=cart.find(i=>i.id===p.id); const qty=item?item.qty:0;
+    return `<div class="card">
+      <img src="${p.image}" alt="${p.name}">
+      <h5>${p.name}</h5>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <p>₱${p.price.toFixed(2)}</p>
+        ${qty===0?`<i class="fas fa-shopping-cart" onclick="addToCart(${p.id})"></i>`:
+        `<div style="display:flex;align-items:center;gap:5px;">
+          <button onclick="changeQty(${p.id},-1)">-</button>
+          <span>${qty}</span>
+          <button onclick="changeQty(${p.id},1)">+</button>
+        </div>`}
+      </div>
+    </div>`;
+  }).join("");
 }
 
-/* ================= CATEGORY FILTER ================= */
-function filterCategory(category, e) {
-currentCategory = category;
+// ================= CATEGORY FILTER =================
+function filterCategory(cat,e){
+currentCategory=cat;
 document.querySelectorAll('.category').forEach(c=>c.classList.remove('active'));
 e.target.classList.add('active');
-
-renderProducts(
-    category==="All"
-    ? products
-    : products.filter(p=>p.category===category)
-);
+renderProducts(cat==="All"?products:products.filter(p=>p.category===cat));
 }
 
-/* ================= CART FUNCTIONS ================= */
-function addToCart(id){
-const product=products.find(p=>p.id===id);
-const item=cart.find(p=>p.id===id);
-item?item.qty++:cart.push({...product,qty:1});
-renderCart();
-}
-
-function changeQty(id,c){
-const item=cart.find(i=>i.id===id);
-if(!item)return;
-item.qty+=c;
-if(item.qty<=0) removeItem(id);
-else renderCart();
-}
-
-function removeItem(id){
-cart=cart.filter(i=>i.id!==id);
-renderCart();
-}
-
+// ================= CART FUNCTIONS =================
+function addToCart(id){ const product=products.find(p=>p.id===id); const item=cart.find(i=>i.id===id); item?item.qty++:cart.push({...product,qty:1}); renderCart(); }
+function changeQty(id,c){ const item=cart.find(i=>i.id===id); if(!item)return; item.qty+=c; if(item.qty<=0) removeItem(id); else renderCart(); }
+function removeItem(id){ cart=cart.filter(i=>i.id!==id); renderCart(); }
 function renderCart(){
-const container=document.getElementById("cartItems");
-container.innerHTML=cart.map(item=>`
-<div class="cart-item">
-<div>${item.name}<br>₱${item.price.toFixed(2)}</div>
-<div class="qty-control">
-<button onclick="changeQty(${item.id},-1)">-</button>
-${item.qty}
-<button onclick="changeQty(${item.id},1)">+</button>
-<button onclick="removeItem(${item.id})">X</button>
-</div>
-</div>`).join("");
-
-updateSummary();
-
-renderProducts(
-currentCategory==="All"
-? products
-: products.filter(p=>p.category===currentCategory)
-);
+  const container=document.getElementById("cartItems");
+  container.innerHTML=cart.map(item=>`<div class="cart-item">
+    <div>${item.name}<br>₱${item.price.toFixed(2)}</div>
+    <div class="qty-control">
+      <button onclick="changeQty(${item.id},-1)" style="width:22px;height:22px;border:none;border-radius:5px;background:orange;font-weight:bold;">-</button>${item.qty}<button onclick="changeQty(${item.id},1)"style="width:22px;height:22px;border:none;border-radius:5px;background:orange;font-weight:bold;">+</button>
+      <button onclick="removeItem(${item.id})">X</button>
+    </div></div>`).join("");
+  updateSummary();
+  renderProducts(currentCategory==="All"?products:products.filter(p=>p.category===currentCategory));
 }
-
-/* ================= SUMMARY ================= */
 function updateSummary(){
-const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
-const tax=subtotal*TAX_RATE;
-finalTotal=subtotal+tax;
-
-document.getElementById("subtotal").innerText=`₱${subtotal.toFixed(2)}`;
-document.getElementById("tax").innerText=`₱${tax.toFixed(2)}`;
-document.getElementById("total").innerText=`₱${finalTotal.toFixed(2)}`;
+  const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const tax=subtotal*TAX_RATE;
+  finalTotal=subtotal+tax;
+  document.getElementById("subtotal").innerText=`₱${subtotal.toFixed(2)}`;
+  document.getElementById("tax").innerText=`₱${tax.toFixed(2)}`;
+  document.getElementById("total").innerText=`₱${finalTotal.toFixed(2)}`;
 }
 
-/* ================= PAYMENT MODAL ================= */
+// ================= PAYMENT MODAL =================
 function PaymentModal(){
-if(cart.length===0){
-alert("Cart is empty!");
-return;
-}
+if(cart.length===0){ alert("Cart is empty!"); return; }
 openModal("PaymentModal");
-
 document.getElementById("paymentSection").style.display="flex";
-/*document.getElementById("paymentCartItems").innerHTML=document.getElementById("cartItems").innerHTML;*/
-document.getElementById("paymentTotal").innerText=`₱${finalTotal.toFixed(2)}`;
-
-// Reset payment
 selectedPaymentMethod="";
 document.getElementById("cashForm").style.display="none";
 document.getElementById("cardQR").style.display="none";
 document.querySelectorAll(".payment-methods button").forEach(b=>b.classList.remove("active"));
 document.getElementById("cashInput").value="";
 document.getElementById("changeAmount").innerText="₱0.00";
-
-// Add cash input listener
-const cashInput=document.getElementById("cashInput");
-cashInput.oninput=function(){
-    const cash=parseFloat(this.value)||0;
-    const change=cash-finalTotal;
-    document.getElementById("changeAmount").innerText=change>=0?`₱${change.toFixed(2)}`:"₱0.00";
-};
+document.getElementById("paymentTotal").innerText=`₱${finalTotal.toFixed(2)}`;
 }
 
-/* ================= PAYMENT ================= */
+// ================= SELECT ORDER TYPE =================
+function selectOrderType(type,e){
+selectedOrderType=type;
+document.querySelectorAll("#orderTypeOptions button").forEach(b=>b.classList.remove("active"));
+e.target.classList.add("active");
+document.getElementById("takeOutInput").style.display="none";
+document.getElementById("dineInput").style.display="none";
+document.getElementById("deliveryInput").style.display="none";
+if(type==="TakeOut") document.getElementById("takeOutInput").style.display="block";
+if(type==="DineIn") document.getElementById("dineInput").style.display="block";
+if(type==="Delivery") document.getElementById("deliveryInput").style.display="block";
+}
+
+// ================= PAYMENT =================
 function selectPayment(method,e){
 selectedPaymentMethod=method;
 document.querySelectorAll(".payment-methods button").forEach(b=>b.classList.remove("active"));
-e.target.classList.add("active");
-
-document.getElementById("cashForm").style.display= method==="Cash"?"block":"none";
-document.getElementById("cardQR").style.display= method==="Card"?"block":"none";
-
-// reset inputs
-if(method==="Cash"){
+if(e) e.target.classList.add("active");
+document.getElementById("cashForm").style.display=(method==="Cash")?"block":"none";
+document.getElementById("cardQR").style.display=(method==="Card")?"block":"none";
 document.getElementById("cashInput").value="";
 document.getElementById("changeAmount").innerText="₱0.00";
 }
-}
 
-/* ================= CONFIRM PAYMENT ================= */
-function confirmCashPayment(){
-if(selectedPaymentMethod!=="Cash")
-return alert("Select Cash payment");
-
-const cash=parseFloat(document.getElementById("cashInput").value);
-if(!cash||cash<finalTotal)
-return alert("Insufficient cash");
-
-completeOrder("Cash", finalTotal);
-}
-
-function simulateCardPayment(){
-
-printReceipt(
-
-"Card",
-
-0,
-
-0
-
-);
-
-}
-
-/* ================= COMPLETE ORDER ================= */
-function completeOrder(method, total){
-const orderItems=[...cart];
-
-alert("Payment Successful via "+method);
-printReceipt(method,orderItems,total);
-
-cart=[];
-renderCart();
-goBack();
-}
-
-function goBack(){
-closeModal("PaymentModal");
-document.getElementById("paymentSection").style.display="none";
-document.getElementById("cashInput").value="";
-document.getElementById("changeAmount").innerText="₱0.00";
-selectedPaymentMethod="";
-}
-
-/* ================= RECEIPT ================= */
-function completeOrder(method, total) {
-    if(cart.length === 0) return;
-
-    const orderItems = [...cart];
-
-    // Close modal first to prevent overlay issues
-    closeModal('PaymentModal');
-
-    // Delay printing slightly to ensure modal is closed
-    setTimeout(() => {
-        printReceipt(method, orderItems, total);
-    }, 100);
-
-    // Clear cart
-    cart = [];
-    renderCart();
-}
-
-function printReceipt(method, items, total) {
-    const receipt = window.open('', '', 'width=300,height=600');
-    if(!receipt) {
-        alert('Popup blocked! Please allow popups for this site.');
-        return;
-    }
-
-    const itemList = items.map(i => `${i.name} x${i.qty} - ₱${(i.price*i.qty).toFixed(2)}`).join('<br>');
-
-    receipt.document.write(`
-        <html>
-        <head>
-            <title>Receipt</title>
-            <style>
-                body { font-family: monospace; padding: 10px; }
-                h2,h3,h4 { margin: 5px 0; }
-                hr { border: 1px dashed #000; }
-                center { margin-top: 10px; }
-            </style>
-        </head>
-        <body>
-            <h2>Cart Avenue</h2>
-            <hr>
-            ${itemList}
-            <hr>
-            <h3>Total: ₱${total.toFixed(2)}</h3>
-            <h3>Payment: ${method}</h3>
-            <h4>${new Date().toLocaleString()}</h4>
-            <hr>
-            <center>Thank you!</center>
-        </body>
-        </html>
-    `);
-
-    receipt.document.close();
-    receipt.focus(); // Focus is required for some browsers
-    receipt.print();
-    receipt.close();
-}
-/* ================= MODAL ================= */
-function openModal(id){
-  document.querySelectorAll('.modal').forEach(modal => modal.style.display = "none");
-  document.getElementById(id).style.display = "block";
-}
-
-function closeModal(id){
-  document.getElementById(id).style.display = "none";
-}
-
-// close when clicking outside
-window.onclick = function(event){
-  if(event.target.classList.contains("modal")){
-      event.target.style.display="none";
-  }
-}
-
-/* ================= INIT ================= */
-renderProducts(products);
-
-
-// ===== Open & Close Modal =====
-function openModal(modalId) {
-  document.getElementById(modalId).style.display = 'block';
-  document.getElementById('paymentSection').style.display = 'block';
-}
-
-function closeModal(modalId) {
-  document.getElementById(modalId).style.display = 'none';
-  resetPayment();
-}
-
-// ===== Reset Payment Form =====
-function resetPayment() {
-  document.getElementById('cashForm').style.display = 'none';
-  document.getElementById('cardQR').style.display = 'none';
-  document.getElementById('cashInput').value = '';
-  document.getElementById('changeAmount').textContent = '₱0.00';
-  document.querySelector('.confirm-btn').style.display = 'block';
-}
-
-// ===== Payment Type Selection =====
-function selectPayment(type) {
-  const cashForm = document.getElementById('cashForm');
-  const cardQR = document.getElementById('cardQR');
-  const confirmBtn = document.querySelector('.confirm-btn');
-
-  if(type === 'Cash') {
-    cashForm.style.display = 'block';
-    cardQR.style.display = 'none';
-    confirmBtn.textContent = 'Confirm Cash Payment';
-    confirmBtn.style.display = 'block';
-  } else if(type === 'Card') {
-    cashForm.style.display = 'none';
-    cardQR.style.display = 'block';
-    confirmBtn.style.display = 'none';
-  }
-}
-
-// ===== Cash Change Calculation =====
-document.getElementById('cashInput').addEventListener('input', function() {
-  let total = parseFloat(document.getElementById('paymentTotal').textContent.replace('₱','')) || 0;
-  let cash = parseFloat(this.value) || 0;
-  let change = cash - total;
-  document.getElementById('changeAmount').textContent = change >= 0 ? `₱${change.toFixed(2)}` : '₱0.00';
+document.getElementById('cashInput').addEventListener('input',function(){
+let total=parseFloat(document.getElementById('paymentTotal').textContent.replace('₱',''))||0;
+let cash=parseFloat(this.value)||0;
+let change=cash-total;
+document.getElementById('changeAmount').textContent = change>=0?`₱${change.toFixed(2)}`:'₱0.00';
 });
 
-// ===== Confirm Cash Payment =====
 function confirmCashPayment(){
+if(!selectedOrderType){ alert("Select Order Type First!"); return; }
+if(selectedOrderType==="TakeOut"){ orderExtraInfo=document.getElementById("nicknameInput").value; if(orderExtraInfo===""){ alert("Enter Nickname"); return; } }
+if(selectedOrderType==="DineIn"){ let table=parseInt(document.getElementById("tableInput").value); if(!table||table>10){ alert("Table max is 10"); return; } orderExtraInfo="Table "+table; }
+if(selectedOrderType==="Delivery"){ orderExtraInfo=document.getElementById("mobileInput").value; if(orderExtraInfo.length<11){ alert("Enter valid mobile"); return; } }
 
-let total =
-parseFloat(
-document.getElementById("paymentTotal")
-.innerText.replace("₱","")
-);
+let total=parseFloat(document.getElementById("paymentTotal").innerText.replace("₱",""));
+let cash=parseFloat(document.getElementById("cashInput").value);
+if(isNaN(cash)||cash<total){ alert("Not enough cash!"); return; }
+let change=cash-total;
 
-let cash =
-parseFloat(
-document.getElementById("cashInput").value
-);
-
-if(isNaN(cash) || cash < total){
-
-alert("Not enough cash!");
-
-return;
-
+printReceipt("Cash", cash.toFixed(2), change.toFixed(2));
 }
 
-let change = cash - total;
+function simulateCardPayment(){ printReceipt("Card", 0, 0); }
 
-document.getElementById(
-"changeAmount"
-).innerText = "₱" + change.toFixed(2);
+function goBack(){ closeModal("PaymentModal"); document.getElementById("paymentSection").style.display="none"; selectedPaymentMethod=""; selectedOrderType=""; orderExtraInfo=""; }
 
-
-/* PRINT */
-
-printReceipt(
-
-"Cash",
-
-cash.toFixed(2),
-
-change.toFixed(2)
-
-);
-
-}
-
-
-/* ===== ORDER NUMBER ===== */
-function generateOrderNo(){
-
-return "ORD-" + Date.now().toString().slice(-6);
-
-}
-
-/* ===== PRINT RECEIPT ===== */
-
-
-function printReceipt(
-
-paymentType,
-
-cashReceived=0,
-
-change=0
-
-){
-
-if(cart.length===0)return;
-
-let orderNo=generateOrderNo();
-
-let total=
-
-"₱"+finalTotal.toFixed(2);
-
+// ================= RECEIPT =================
+function printReceipt(paymentType,cashReceived=0,change=0){
+if(cart.length===0) return;
+let orderNo="ORD-"+Date.now().toString().slice(-6);
+let total="₱"+finalTotal.toFixed(2);
 let now=new Date();
+let dateTime=now.toLocaleString();
+let cartHTML=cart.map(i=>`<div class="item"><span>${i.name} x${i.qty}</span><span>₱${(i.price*i.qty).toFixed(2)}</span></div>`).join("");
 
-let dateTime=
-
-now.toLocaleString();
-
-
-// ✅ ITEM LIST
-
-let cartHTML=
-
-cart.map(item=>`
-
-<div class="item">
-
-<span>
-
-${item.name} x${item.qty}
-
-</span>
-
-<span>
-
-₱${(item.price*item.qty).toFixed(2)}
-
-</span>
-
-</div>
-
-`).join("");
-
-
-
-let receiptWindow=
-
-window.open(
-
-"",
-
-"PRINT",
-
-"width=350,height=800"
-
-);
-
-
+let receiptWindow=window.open("","PRINT","width=350,height=800");
 receiptWindow.document.write(`
-
 <html>
-
 <head>
-
 <title>Receipt</title>
-
 <style>
-
-body{
-
-font-family:monospace;
-
-width:330px;
-
-margin:4px;
-
-font-size:24px;
-
-}
-
+body{font-family:monospace;width:330px;margin:4px;font-size:24px;}
 .center{text-align:center;}
-
-.item{
-
-display:flex;
-
-justify-content:space-between;
-
-margin:4px 0;
-
-}
-
-hr{
-
-border:none;
-
-border-top:2px dashed black;
-
-margin:4px 0;
-
-}
-
-.big{
-
-font-size:24px;
-
-font-weight:bold;
-
-}
-
-.header{
-
-font-size:24px;
-
-font-weight:bold;
-
-}
-
+.item{display:flex;justify-content:space-between;margin:4px 0;}
+hr{border:none;border-top:2px dashed black;margin:4px 0;}
+.big{font-size:24px;font-weight:bold;}
+.header{font-size:31px;font-weight:bold;}
 </style>
-
 </head>
-
 <body onload="window.print();setTimeout(()=>window.close(),800);">
-
 <div class="center">
-
-<div class="header">
-
-MASTER KURT FOODHUB
-
-</div>
-Address: 2530a Isagani st. Sta Cruz Manila
+<div class="header">MASTER KURT FOODHUB</div>
+Address: 2530a Isagani st. Sta Cruz Manila<br>
 Mobile #: 0950-682-5698
 <hr>
-Order :
-
-${orderNo}<br>
-
-${dateTime}
+Order : ${orderNo}<br>${dateTime}
 </div>
-
-<hr>
+<hr><br>${cartHTML}<br><hr>
+<div class="item big"><span>Total</span><span>${total}</span></div>
 <br>
-${cartHTML}
-<br>
-<hr>
-
-<div class="item big">
-
-<span>Total</span>
-
-<span>${total}</span>
-
-</div>
-
-<br>
-
-Payment :
-
-${paymentType}<br>
-
-Cash :
-
-₱${cashReceived}<br>
-
-Change :
-
-₱${change}
-
-<hr>
-
-<div class="center">
-
-Thank You!
-
-</div>
-
-</body>
-
-</html>
-
+Type &nbsp;&nbsp;&nbsp;: ${selectedOrderType}<br>
+Details : ${orderExtraInfo}<br>
+Payment : ${paymentType}<br>
+Cash &nbsp;&nbsp;&nbsp;: ₱${cashReceived}<br>
+Change &nbsp;: ₱${change}<hr>
+<div class="center">Thank You!</div>
+</body></html>
 `);
-
 receiptWindow.document.close();
-
-
-// clear cart
-
-cart=[];
-
-renderCart();
-
-closeModal("PaymentModal");
-
+cart=[]; renderCart(); goBack();
+location.reload();
 }
+
+// ================= MODAL =================
+function openModal(id){ document.getElementById(id).style.display='block'; document.getElementById('paymentSection').style.display='flex'; }
+function closeModal(id){ document.getElementById(id).style.display='none'; }
+
+// ================= INIT =================
+renderProducts(products);
 </script>
 </body>
 </html>
-
-
