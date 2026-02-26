@@ -106,7 +106,7 @@ button.active{background:orange;color:black;}
 </div>
 
 <nav class="navbar">
-  <a href="https://masterkurt.pages.dev/" class="nav-item" onclick="openModal('homeModal')">🏠 HOME</a>
+ <!--  <a href="https://masterkurt.pages.dev/" class="nav-item" onclick="openModal('homeModal')">🏠 HOME</a> -->
   <a href="#" class="nav-item" onclick="openModal('logsModal')">📄 VIEW CART</a>
   <a href="#" class="nav-item" onclick="PaymentModal()">⚙️ PAY NOW</a>
   <a href="https://masterkurt.pages.dev/" class="nav-item" onclick="openModal('homeModal')">📊 CANCEL</a>
@@ -425,7 +425,6 @@ Change &nbsp;: ₱${change}<hr>
 <div class="center">Thank You!</div>
 </body></html>
 `);
-    receiptWindow.document.print();
 receiptWindow.document.close();
 cart=[]; renderCart(); goBack();
 location.reload();
@@ -440,4 +439,3 @@ renderProducts(products);
 </script>
 </body>
 </html>
-
