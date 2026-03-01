@@ -198,63 +198,63 @@ button.active{background:orange;color:black;}
 // ================= VARIABLES =================
 const TAX_RATE = 0.00;
 const products = [
-  { id: 1, name: "Clasik Margerit", price: 12.99, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/img/ClassicMargherita.jpeg?raw=true" },
-  { id: 2, name: "Hawaiian Pizza", price: 13.99, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/img/HawaiianPizza.jpg?raw=true" },
-  { id: 3, name: "Ham & Cheese", price: 12.99, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/pizza/Ham%20&%20Cheese.jpg?raw=true" },
-  { id: 4, name: "Hawaiian overload", price: 12.99, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/pizza/Hawaiian.jpg?raw=true" },
-  { id: 5, name: "Pepperoni", price: 12.99, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/pizza/Pepperoni.jpg?raw=true" },
-  { id: 6, name: "Veggie Supreme", price: 12.99, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/pizza/Veggie%20Supreme.jpg?raw=true" },
+  { id: 1, name: "Clasik Margerit", price: 110.00, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/img/ClassicMargherita.jpeg?raw=true" },
+  { id: 2, name: "Hawaiian Pizza", price: 110.00, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/img/HawaiianPizza.jpg?raw=true" },
+  { id: 3, name: "Ham & Cheese", price: 110.00, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/pizza/Ham%20&%20Cheese.jpg?raw=true" },
+  { id: 4, name: "Hawaiian overl", price: 110.00, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/pizza/Hawaiian.jpg?raw=true" },
+  { id: 5, name: "Pepperoni", price: 110.00, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/pizza/Pepperoni.jpg?raw=true" },
+  { id: 6, name: "Veggie Supreme", price: 110.00, category: "Pizza", image:"https://github.com/sjosep38/masterkurt/blob/master/pizza/Veggie%20Supreme.jpg?raw=true" },
   
- { id: 7, name: "Coca Cola", price: 2.99, category: "Drinks", image:"https://github.com/sjosep38/masterkurt/blob/master/img/CocaCola.jpg?raw=true" },
- { id: 8, name: "blue Lemonade", price: 12.99, category: "Drinks", image:"https://github.com/sjosep38/masterkurt/blob/master/drinkz/blueLemonade.jpg?raw=true" },
- { id: 9, name: "Lemon Soda", price: 12.99, category: "Drinks", image:"https://github.com/sjosep38/masterkurt/blob/master/drinkz/Lemon%20Soda.jpg?raw=true" },
- { id: 10, name: "Soda Water", price: 12.99, category: "Drinks", image:"https://github.com/sjosep38/masterkurt/blob/master/drinkz/Soda%20Water.jpg?raw=true" },
- { id: 11, name: "Tonic Water", price: 12.99, category: "Drinks", image:"https://github.com/sjosep38/masterkurt/blob/master/drinkz/Tonic%20Water.jpg?raw=true" },
+ { id: 7, name: "Coca Cola", price: 40.00, category: "Drinks", image:"https://github.com/sjosep38/masterkurt/blob/master/img/CocaCola.jpg?raw=true" },
+ { id: 8, name: "blue Lemonade", price: 130.00, category: "Drinks", image:"https://github.com/sjosep38/masterkurt/blob/master/drinkz/blueLemonade.jpg?raw=true" },
+ { id: 9, name: "Lemon Soda", price: 60.00, category: "Drinks", image:"https://github.com/sjosep38/masterkurt/blob/master/drinkz/Lemon%20Soda.jpg?raw=true" },
+ { id: 10, name: "Soda Water", price: 34.00, category: "Drinks", image:"https://github.com/sjosep38/masterkurt/blob/master/drinkz/Soda%20Water.jpg?raw=true" },
+ { id: 11, name: "Tonic Water", price: 34.00, category: "Drinks", image:"https://github.com/sjosep38/masterkurt/blob/master/drinkz/Tonic%20Water.jpg?raw=true" },
  
-{ id: 12, name: "Halo-Halo", price: 13.99, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Halo-Halo.jpg?raw=true" },
-{ id: 13, name: "Leche Flan", price: 13.99, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/img/LecheFlan.jpg?raw=true" },
-{ id: 14, name: "Bibingka", price: 12.99, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Bibingka.jpg?raw=true" },
-{ id: 15, name: "Kutsinta", price: 12.99, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Kutsinta.jpg?raw=true" },
-{ id: 16, name: "Pichi-pichi", price: 12.99, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Pichi-pichi.jpg?raw=true" },
-{ id: 17, name: "Puto", price: 12.99, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Puto.jpg?raw=true" },
-{ id: 18, name: "Maja Blanca", price: 12.99, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Maja%20Blanca.jpg?raw=true" },
-{ id: 19, name: "Turon", price: 12.99, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Turon.jpg?raw=true" },
-{ id: 20, name: "Sapin sapin", price: 12.99, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Sapin-sapin.jpg?raw=true" },
-{ id: 21, name: "Ube Halaya", price: 12.99, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Ube%20Halaya.jpg?raw=true" },
+{ id: 12, name: "Halo-Halo", price: 50.00, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Halo-Halo.jpg?raw=true" },
+{ id: 13, name: "Leche Flan", price: 50.00, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/img/LecheFlan.jpg?raw=true" },
+{ id: 14, name: "Bibingka", price: 25.00, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Bibingka.jpg?raw=true" },
+{ id: 15, name: "Kutsinta", price: 10.00, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Kutsinta.jpg?raw=true" },
+{ id: 16, name: "Pichi-pichi", price: 10.00, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Pichi-pichi.jpg?raw=true" },
+{ id: 17, name: "Puto", price: 12.00, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Puto.jpg?raw=true" },
+{ id: 18, name: "Maja Blanca", price: 40.00, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Maja%20Blanca.jpg?raw=true" },
+{ id: 19, name: "Turon", price: 25.00, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Turon.jpg?raw=true" },
+{ id: 20, name: "Sapin sapin", price: 12.00, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Sapin-sapin.jpg?raw=true" },
+{ id: 21, name: "Ube Halaya", price: 20.00, category: "Dessert", image:"https://github.com/sjosep38/masterkurt/blob/master/dessert/Ube%20Halaya.jpg?raw=true" },
 
- { id: 22, name: "Pork Silog", price: 12.99, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/img/PorkSilog.jpg?raw=true" },
- { id: 23, name: "Bangsilog", price: 12.99, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/silogs/Bangsilog.jpg?raw=true" },
- { id: 24, name: "Chickensilog", price: 12.99, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/silogs/Chickensilog.jpeg?raw=true" },
- { id: 25, name: "Hotsilog", price: 12.99, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/silogs/Hotsilog.jpg?raw=true" },
- { id: 26, name: "Longsilog", price: 12.99, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/silogs/Longsilog.jpg?raw=true" },
- { id: 27, name: "Tapsilog", price: 12.99, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/silogs/Tapsilog.jpg?raw=true" },
- { id: 28, name: "Tosilog", price: 12.99, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/silogs/Tosilog.jpg?raw=true" },
+ { id: 22, name: "Pork Silog", price: 70.00, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/img/PorkSilog.jpg?raw=true" },
+ { id: 23, name: "Bangsilog", price: 70.00, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/silogs/Bangsilog.jpg?raw=true" },
+ { id: 24, name: "Chickensilog", price: 70.00, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/silogs/Chickensilog.jpeg?raw=true" },
+ { id: 25, name: "Hotsilog", price: 70.00, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/silogs/Hotsilog.jpg?raw=true" },
+ { id: 26, name: "Longsilog", price: 70.00, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/silogs/Longsilog.jpg?raw=true" },
+ { id: 27, name: "Tapsilog", price: 70.00, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/silogs/Tapsilog.jpg?raw=true" },
+ { id: 28, name: "Tosilog", price: 70.00, category: "Silog", image:"https://github.com/sjosep38/masterkurt/blob/master/silogs/Tosilog.jpg?raw=true" },
 
- { id: 29, name: "Coffee Latte", price: 12.99, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Coffee%20Latte.jpg?raw=true" },
- { id: 30, name: "Cappuccino", price: 2.99, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/coffee/Cappuccino.jpg?raw=true" },
- { id: 31, name: "Cold Brew", price: 12.99, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/coffee/Cold%20Brew.jpg?raw=true" },
- { id: 32, name: "Espresso", price: 12.99, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/coffee/Espresso.jpg?raw=true" },
- { id: 33, name: "Iced Coffee", price: 12.99, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/coffee/Iced%20Coffee.jpg?raw=true" },
- { id: 34, name: "Macchiato", price: 12.99, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/coffee/Macchiato.jpg?raw=true" },
- { id: 35, name: "mocha coffee ", price: 12.99, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/coffee/Mocha.jpg?raw=true" },
+ { id: 29, name: "Coffee Latte", price: 40.00, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Coffee%20Latte.jpg?raw=true" },
+ { id: 30, name: "Cappuccino", price: 40.00, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/coffee/Cappuccino.jpg?raw=true" },
+ { id: 31, name: "Cold Brew", price: 40.00, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/coffee/Cold%20Brew.jpg?raw=true" },
+ { id: 32, name: "Espresso", price: 40.00, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/coffee/Espresso.jpg?raw=true" },
+ { id: 33, name: "Iced Coffee", price: 40.00, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/coffee/Iced%20Coffee.jpg?raw=true" },
+ { id: 34, name: "Macchiato", price: 40.00, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/coffee/Macchiato.jpg?raw=true" },
+ { id: 35, name: "mocha coffee ", price: 40.00, category: "Coffee", image:"https://github.com/sjosep38/masterkurt/blob/master/coffee/Mocha.jpg?raw=true" },
 
- { id: 36, name: "Fried Chicken", price: 8.99, category: "Fried", image:"https://github.com/sjosep38/masterkurt/blob/master/img/FriedChicken.jpg?raw=true" },
+ { id: 36, name: "Fried Chicken", price: 60.00, category: "Fried", image:"https://github.com/sjosep38/masterkurt/blob/master/img/FriedChicken.jpg?raw=true" },
  
- { id: 37, name: "Cookies & Cream", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Cookies&Cream.jpg?raw=true" },
-  { id: 38, name: "Choco Kisses", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/ChocoKisses.jpg?raw=true" },
-  { id: 39, name: "Chocolate", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Chocolate.jpg?raw=true" },
-  { id: 40, name: "Hot Fudge", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/HotFudge.jpg?raw=true" },
-  { id: 41, name: "Ube Macapuno", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/UbeMacapuno.jpg?raw=true" },
-  { id: 42, name: "Mango", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Mango.jpg?raw=true" },
-  { id: 43, name: "Avocado", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/avocado.jpg?raw=true" },
-  { id: 44, name: "Buko Pandan", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Buko%20Pandan.jpg?raw=true" },
-  { id: 45, name: "Taro", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Taro.jpg?raw=true" },
-  { id: 46, name: "Strawberry", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Strawberry.jpg?raw=true" },
-  { id: 47, name: "Vanilla", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Vanilla.jpg?raw=true" },
-  { id: 48, name: "Melon", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Melon.jpg?raw=true" },
-  { id: 49, name: "Caramel Macchiato", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/CaramelMacchiato.jpg?raw=true" },
-  { id: 50, name: "Black Forest", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/BlackForest.jpg?raw=true" },
-  { id: 51, name: "Double Dutch", price: 2.99, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/DoubleDutch.jpg?raw=true" }
+ { id: 37, name: "Cookies & Cream", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Cookies&Cream.jpg?raw=true" },
+  { id: 38, name: "Choco Kisses", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/ChocoKisses.jpg?raw=true" },
+  { id: 39, name: "Chocolate", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Chocolate.jpg?raw=true" },
+  { id: 40, name: "Hot Fudge", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/HotFudge.jpg?raw=true" },
+  { id: 41, name: "Ube Macapuno", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/UbeMacapuno.jpg?raw=true" },
+  { id: 42, name: "Mango", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Mango.jpg?raw=true" },
+  { id: 43, name: "Avocado", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/avocado.jpg?raw=true" },
+  { id: 44, name: "Buko Pandan", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Buko%20Pandan.jpg?raw=true" },
+  { id: 45, name: "Taro", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Taro.jpg?raw=true" },
+  { id: 46, name: "Strawberry", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Strawberry.jpg?raw=true" },
+  { id: 47, name: "Vanilla", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Vanilla.jpg?raw=true" },
+  { id: 48, name: "Melon", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Melon.jpg?raw=true" },
+  { id: 49, name: "Caramel Macchiato", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/CaramelMacchiato.jpg?raw=true" },
+  { id: 50, name: "Black Forest", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/BlackForest.jpg?raw=true" },
+  { id: 51, name: "Double Dutch", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/DoubleDutch.jpg?raw=true" }
 ];
 
 let cart = [];
@@ -418,7 +418,7 @@ Details : ${orderExtraInfo}<br>
 Payment : ${paymentType}<br>
 Cash &nbsp;&nbsp;&nbsp;: ₱${cashReceived}<br>
 Change &nbsp;: ₱${change}<hr>
-<div class="center">Thank You!</div>
+<div class="center">Thank you for your purchase!</div>
 </body></html>
 `);
 receiptWindow.document.close();
