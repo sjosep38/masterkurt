@@ -43,7 +43,7 @@ body { background:#111; color:white; height:100vh; overflow:hidden; }
 .summary { margin-top:15px; border-top:1px solid #444; padding-top:10px; }
 .summary div { display:flex; justify-content:space-between; margin:5px 0; }
 .checkout-btn { background:orange; padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; }
-.payment { flex:1; background:#1a1a1a; padding:10px; display:flex; flex-direction:column; }
+.payment { flex:1; background:#1a1a1a; padding:10px; display:flex; flex-direction:column; border-radius:15px;}
 .payment-total { text-align:center; margin:5px 0; }
 .payment-total h1 { color:orange; }
 .payment-methods { display:flex; gap:10px; justify-content:center; margin-bottom:20px; }
@@ -70,8 +70,8 @@ body { background:#111; color:white; height:100vh; overflow:hidden; }
 .nav-item.active { color:#58a6ff; font-weight:bold; text-decoration:underline; }
 .nav-item.active span { transform:scale(1.9); }
 
-.modal { display:none; position:fixed; z-index:999; top:0; width:100%; height:100%; background:black;}
-.modal-content { background:black; margin-top:50px; margin-left:5px; width:100%; height:100%; overflow-y:auto; align-items:center; }
+.modal { display:none; position:fixed; z-index:999; top:0; width:100%; height:100%;border-radius:8px; background:black;}
+.modal-content { background:black; margin-top:50px; margin-left:5px; width:100%; border-radius:8px; height:100%; overflow-y:auto; align-items:center; }
 .close { float:right; font-size:25px; cursor:pointer; color:black; }
 
 button.active{background:orange;color:black;}
@@ -159,8 +159,8 @@ button.active{background:orange;color:black;}
 <input id="mobileInput" type="tel" placeholder="Mobile Number" maxlength="11" style="width:100%; font-size: 22px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;">
 </div>
 
-<div class="PaymentOption" style="display:flex;flex-direction:column;gap:1px;margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">
 <h4>Payment Option</h4>
+<div class="PaymentOption" style="display:flex;flex-direction:column;gap:1px;margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">
 <div class="payment-methods">
 <button onclick="selectPayment('Cash', event)">💵 Cash</button>
 <button onclick="selectPayment('Card', event)">💳 Card</button>
