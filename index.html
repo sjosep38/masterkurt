@@ -30,9 +30,9 @@ body { background:#111; color:white; height:100vh; overflow:hidden; }
 .card {background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%); border-radius:5px; padding:5px; transition:0.3s; }
 .card:hover { transform:translateY(-5px); }
 .card img { width:100%; height:100px; object-fit:cover; border-radius:5px; }
-.card h5 { margin:1px 0; }
+.card h4 { margin:1px 0; }
 .card p { font-weight:bold; color:orange; }
-.card i { font-size:25px; cursor:pointer; }
+.card i { font-size:30px; cursor:pointer; }
 
 /* CART */
 .cart { flex:1; background:#1a1a1a; padding:10px; display:flex; flex-direction:column; max-height:621px; min-height:620px; border-radius:15px; }
@@ -252,7 +252,7 @@ const products = [
   { id: 46, name: "Strawberry", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Strawberry.jpg?raw=true" },
   { id: 47, name: "Vanilla", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Vanilla.jpg?raw=true" },
   { id: 48, name: "Melon", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Melon.jpg?raw=true" },
-  { id: 49, name: "CaramelMachiato", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/CaramelMacchiato.jpg?raw=true" },
+  { id: 49, name: "Caramel Machiato", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/CaramelMacchiato.jpg?raw=true" },
   { id: 50, name: "Black Forest", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/BlackForest.jpg?raw=true" },
   { id: 51, name: "Double Dutch", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/DoubleDutch.jpg?raw=true" }
 ];
@@ -270,7 +270,7 @@ function renderProducts(list){
   container.innerHTML=list.map(p=>{ const item=cart.find(i=>i.id===p.id); const qty=item?item.qty:0;
     return `<div class="card">
       <img src="${p.image}" alt="${p.name}">
-      <h5>${p.name}</h5>
+      <h4>${p.name}</h4>
       <div style="display:flex;justify-content:space-between;align-items:center;">
         <p>₱${p.price.toFixed(2)}</p>
         ${qty===0?`<i class="fas fa-shopping-cart" onclick="addToCart(${p.id})"></i>`:
