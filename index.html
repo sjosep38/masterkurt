@@ -146,17 +146,17 @@ button.active{background:orange;color:black;}
 <!-- Take Out Input -->
 <div id="takeOutInput" style="display:none;">
 <label>Nickname :</label>
-<input id="nicknameInput" type="text" style="width:100%;padding:10px;border-radius:6px;border:none;margin-top:5px;">
+<input id="nicknameInput"  placeholder="Nickname Here" style="width:100%; font-size: 22px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;">
 </div>
 <!-- Dine In Input -->
 <div id="dineInput" style="display:none;">
 <label>Table Number (1-10)</label>
-<input id="tableInput" type="number" min="1" max="10" style="width:100%;padding:10px;border-radius:6px;border:none;margin-top:5px;">
+<input id="tableInput" type="number" min="1" max="10"  placeholder="Enter Table Number ( 1 - 10 )" style="width:100%; font-size: 22px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;">
 </div>
 <!-- Delivery Input -->
 <div id="deliveryInput" style="display:none;">
 <label>Mobile Number</label>
-<input id="mobileInput" type="tel" placeholder="09XXXXXXXXX" maxlength="11" style="width:100%; font-size: 25px; padding:5px;border-radius:6px;border:none;margin-top:5px;">
+<input id="mobileInput" type="tel" placeholder="Mobile Number" maxlength="11" style="width:100%; font-size: 22px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;">
 </div>
 
 <div class="PaymentOption" style="display:flex;flex-direction:column;gap:1px;margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">
@@ -173,7 +173,7 @@ button.active{background:orange;color:black;}
 
 <div id="cashForm" style="display:none; margin-top:10px;">
 <label><b>Cash Received:</b></label>
-<input type="number" id="cashInput" style="width: 100%; padding:8px;margin-top:5px;border-radius:6px;border:none;">
+<input type="number" id="cashInput" placeholder="Enter Amount Received" style="width:100%; font-size: 22px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;">
 <div style="margin-top:10px;">
 <strong>Change: <span id="changeAmount">₱0.00</span></strong>
 <button class="confirm-btn" onclick="confirmCashPayment()">Confirm Payment (if Cash)</button>
