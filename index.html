@@ -14,8 +14,8 @@ body { background:#111; color:white; height:100vh; overflow:hidden; }
 .brand { max-width:100%; overflow:hidden; }
 .categories { display:flex; gap:10px; overflow-x:auto; scroll-behavior:smooth; -webkit-overflow-scrolling:touch; padding:0 10px; }
 .categories::-webkit-scrollbar { display:none; }
-.category { flex:0 0 auto; padding:10px 20px; background: linear-gradient(90deg,rgba(190, 199, 87, 1) 0%, rgba(83, 222, 237, 1) 100%); border-radius:20px; cursor:pointer; transition:0.3s; width:100px; text-align:center; }
-.category.active, .category:hover {background: linear-gradient(90deg,rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 64%, rgba(237, 221, 83, 1) 100%); color:Black; }
+.category { flex:0 0 auto; padding:10px 20px; border:2px solid white; white; background: linear-gradient(90deg,rgba(139, 40, 224, 1) 0%, rgba(0, 212, 255, 1) 100%); border-radius:50px 20px; 20px; 50px; cursor:pointer; transition:0.3s; width:100px; text-align:center; }
+.category.active, .category:hover {background: linear-gradient(90deg,rgba(255, 0, 64, 1) 0%, rgba(5, 5, 5, 1) 64%); color:White; border-radius:20px 50px 20px 50px;}
 
 /* MAIN */
 .main-wrapper { display:flex; margin-top:70px; height:calc(100vh - 70px); }
@@ -252,7 +252,7 @@ const products = [
   { id: 46, name: "Strawberry", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Strawberry.jpg?raw=true" },
   { id: 47, name: "Vanilla", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Vanilla.jpg?raw=true" },
   { id: 48, name: "Melon", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/Melon.jpg?raw=true" },
-  { id: 49, name: "Caramel Macchiato", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/CaramelMacchiato.jpg?raw=true" },
+  { id: 49, name: "CaramelMachiato", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/CaramelMacchiato.jpg?raw=true" },
   { id: 50, name: "Black Forest", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/BlackForest.jpg?raw=true" },
   { id: 51, name: "Double Dutch", price: 35.00, category: "Shake", image:"https://github.com/sjosep38/masterkurt/blob/master/img/DoubleDutch.jpg?raw=true" }
 ];
