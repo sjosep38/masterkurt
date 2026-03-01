@@ -176,14 +176,14 @@ button.active{background:orange;color:black;}
 <input type="number" id="cashInput" placeholder="Enter Amount Received" maxlength="5" style="width:100%; font-size: 22px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;">
 <div style="margin-top:10px;">
 <strong>Change: <span id="changeAmount">₱0.00</span></strong>
-<button class="confirm-btn" onclick="confirmCashPayment()">Confirm Payment (if Cash)</button>
+<button class="confirm-btn" onclick="confirmCashPayment()">Confirm  Cash Payment</button>
 </div>
 </div>
 
 <div id="cardQR" style="display:none; text-align:center; margin-top:5px;">
 <p>Scan QR to Pay</p>
 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PizzaPOSPayment" width="150">
-<button onclick="simulateCardPayment()" style="padding:10px 20px;background:orange;border:none;border-radius:8px;cursor:pointer;width: 100%;"><b>I've Paid Via Card ( if Gcash)</b></button>
+<button onclick="simulateCardPayment()" style="padding:10px 20px;background:orange;border:none;border-radius:8px;cursor:pointer;width: 100%;"><b>Confirm  GCash Payment</b></button>
 </div>
 
 <div class="payment-actions">
@@ -435,3 +435,4 @@ renderProducts(products);
 </script>
 </body>
 </html>
+
