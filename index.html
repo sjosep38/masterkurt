@@ -137,11 +137,11 @@ button.active{background:orange;color:black;}
 <div class="payment" id="paymentSection" style="display:none; flex-direction:column;">
 
 
-<div id="orderTypeOptions" style="display:flex;flex-direction:column;gap:1px;margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">
-<h4>Order Type</h4>
-<button onclick="selectOrderType('TakeOut',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">🥡 Take Out</button>
-<button onclick="selectOrderType('DineIn',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">🍽️ Dine In</button>
-<button onclick="selectOrderType('Delivery',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">🛵 Delivery</button>
+<!-- <h4>Order Type</h4> -->
+<div id="orderTypeOptions" style="display:flex;flex-direction:rows;gap:20px;margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">
+<button onclick="selectOrderType('TakeOut',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:33%;">🥡 Take Out</button>
+<button onclick="selectOrderType('DineIn',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:33%;">🍽️ Dine In</button>
+<button onclick="selectOrderType('Delivery',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:33%;">🛵 Delivery</button>
 </div>
 <!-- Take Out Input -->
 <div id="takeOutInput" style="display:none;">
@@ -151,7 +151,7 @@ button.active{background:orange;color:black;}
 <!-- Dine In Input -->
 <div id="dineInput" style="display:none;">
 <label>Table Number (1-10)</label>
-<input id="tableInput" type="number" min="1" max="10"  placeholder="Enter Table Number ( 1 - 10 )" style="width:100%; font-size: 22px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;">
+<input id="tableInput" type="number" min="1" max="10"  placeholder="Enter Table Number" style="width:100%; font-size: 22px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;">
 </div>
 <!-- Delivery Input -->
 <div id="deliveryInput" style="display:none;">
