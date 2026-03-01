@@ -25,7 +25,7 @@ body { background:#111; color:white; height:100vh; overflow:hidden; }
 .container { flex:1; display:flex; }
 
 /* PRODUCTS */
-.products-section { flex:3; padding:20px; overflow-y:auto; margin-bottom: 50px;}
+.products-section { flex:3; padding:10px; overflow-y:auto; margin-bottom: 50px;}
 .products { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:5px; }
 .card { background:gray; border-radius:5px; padding:5px; transition:0.3s; }
 .card:hover { transform:translateY(-5px); }
@@ -138,10 +138,10 @@ button.active{background:orange;color:black;}
 
 
 <h4>Order Type</h4>
-<div id="orderTypeOptions" style="display:flex;flex-direction:rows;gap:5px;margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">
-<button onclick="selectOrderType('TakeOut',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:33%;">🥡 Take Out</button>
-<button onclick="selectOrderType('DineIn',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:33%;">🍽️ Dine In</button>
-<button onclick="selectOrderType('Delivery',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:33%;">🛵 Delivery</button>
+<div id="orderTypeOptions" style="display:flex;flex-direction:rows;gap:5px;margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; margin-top:10px; font-weight:bold; width:100%;">
+<button onclick="selectOrderType('TakeOut',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:5px; font-weight:bold; width:33%;">🥡 Take Out</button>
+<button onclick="selectOrderType('DineIn',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:5px; font-weight:bold; width:33%;">🍽️ Dine In</button>
+<button onclick="selectOrderType('Delivery',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:5px; font-weight:bold; width:33%;">🛵 Delivery</button>
 </div>
 <!-- Take Out Input -->
 <div id="takeOutInput" style="display:none;">
@@ -160,7 +160,7 @@ button.active{background:orange;color:black;}
 </div>
 
 <h4>Payment Option</h4>
-<div class="PaymentOption" style="display:flex;flex-direction:column;gap:1px;margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">
+<div class="PaymentOption" style="display:flex;flex-direction:column;gap:1px;margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; margin-top:10px; font-weight:bold; width:100%;">
 <div class="payment-methods">
 <button onclick="selectPayment('Cash', event)">💵 Cash</button>
 <button onclick="selectPayment('Card', event)" >💳 GCash</button>
