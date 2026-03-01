@@ -44,7 +44,7 @@ body { background:#111; color:white; height:100vh; overflow:hidden; }
 .summary div { display:flex; justify-content:space-between; margin:5px 0; }
 .checkout-btn { background:orange; padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; }
 .payment { flex:1; background:#1a1a1a; padding:20px; display:flex; flex-direction:column; }
-.payment-total { text-align:center; margin:30px 0; }
+.payment-total { text-align:center; margin:10px 0; }
 .payment-total h1 { color:orange; }
 .payment-methods { display:flex; gap:10px; justify-content:center; margin-bottom:20px; }
 .payment-methods button { padding:12px 20px; background:#2a2a2a; border:none; border-radius:8px; color:white; cursor:pointer; font-weight:bold; width:100%; }
@@ -137,32 +137,29 @@ button.active{background:orange;color:black;}
 <div class="payment" id="paymentSection" style="display:none; flex-direction:column;">
 
 <h2>Order Type</h2>
-<div id="orderTypeOptions" style="display:flex;flex-direction:column;gap:10px;margin-bottom:15px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">
+<div id="orderTypeOptions" style="display:flex;flex-direction:column;gap:1px;margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">
 <button onclick="selectOrderType('TakeOut',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">🥡 Take Out</button>
 <button onclick="selectOrderType('DineIn',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">🍽️ Dine In</button>
 <button onclick="selectOrderType('Delivery',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">🛵 Delivery</button>
 </div>
-
 <!-- Take Out Input -->
 <div id="takeOutInput" style="display:none;">
 <label>Nickname :</label>
 <input id="nicknameInput" type="text" style="width:100%;padding:10px;border-radius:6px;border:none;margin-top:5px;">
 </div>
-
 <!-- Dine In Input -->
 <div id="dineInput" style="display:none;">
 <label>Table Number (1-10)</label>
 <input id="tableInput" type="number" min="1" max="10" style="width:100%;padding:10px;border-radius:6px;border:none;margin-top:5px;">
 </div>
-
 <!-- Delivery Input -->
 <div id="deliveryInput" style="display:none;">
 <label>Mobile Number</label>
 <input id="mobileInput" type="tel" placeholder="09XXXXXXXXX" maxlength="11" style="width:100%;padding:10px;border-radius:6px;border:none;margin-top:5px;">
 </div>
 <br>
-<br>
 
+<div class="PaymentOption" style="display:flex;flex-direction:column;gap:1px;margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%;">
 <h2>Payment Option</h2>
 <div class="payment-methods">
 <button onclick="selectPayment('Cash', event)">💵 Cash</button>
@@ -186,8 +183,7 @@ button.active{background:orange;color:black;}
 <p>Scan QR to Pay</p>
 <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=PizzaPOSPayment" width="200">
 
-<br><br>
-<button onclick="simulateCardPayment()" style="padding:10px 20px;background:orange;border:none;border-radius:8px;cursor:pointer;width: 100%;">I've Paid Via Card</button>
+<button onclick="simulateCardPayment()" style="padding:10px 20px;background:orange;border:none;border-radius:8px;cursor:pointer;width: 100%;"><b>I've Paid Via Card</b></button>
 </div>
 
 <div class="payment-actions">
@@ -439,5 +435,4 @@ renderProducts(products);
 </script>
 </body>
 </html>
-
 
