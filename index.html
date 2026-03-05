@@ -415,12 +415,23 @@ function printReceipt(paymentType, cashReceived = 0, change = 0) {
 
   // Open intent for Bluetooth printing
   window.location.href =
-    "intent://sendtext#Intent;" +
-    "action=android.intent.action.SEND;" +
-    "package=mate.bluetoothprint;" +
-    "S.android.intent.extra.TEXT=" + encodedText + ";" +
-    "type=text/plain;" +
-    "end;" +
+String printData = getIntentString();
+boolean isAppInstalled = true; // Ideally, use a method to check if the package exists
+
+if (isAppInstalled) {
+    Intent sendIntent = new Intent();
+    sendIntent.setAction(Intent.ACTION_SEND);
+    sendIntent.setPackage("mate.bluetoothprint");
+    sendIntent.putExtra(Intent.EXTRA_TEXT, printData);
+    sendIntent.setType("text/plain");
+
+    // Verify there is an app available to handle this intent before starting
+    if (sendIntent.resolveActivity(getPackageManager()) != null) {
+        startActivity(sendIntent);
+    } else {
+        // Handle the error: the app "mate.bluetoothprint" isn't responding or installed
+    }
+}
     "browser_fallback_url=https://www.webtonative.com/";
 
   cart = [];
