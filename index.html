@@ -388,31 +388,32 @@ function printReceipt(paymentType, cashReceived = 0, change = 0) {
   let dateTime = now.toLocaleString();
 
   let receiptText = "";
-  receiptText += "MASTER KURT FOODHUB\n";
-  receiptText += "2530a Isagani St. Sta Cruz Manila\n";
-  receiptText += "Mobile: 0950-682-5698\n";
-  receiptText += "--------------------------------\n";
-  receiptText += "Order: " + orderNo + "\n";
-  receiptText += dateTime + "\n";
-  receiptText += "--------------------------------\n";
+  receiptText += "MASTER KURT FOODHUB\r\n";
+  receiptText += "2530a Isagani St. Sta Cruz Manila\r\n";
+  receiptText += "Mobile: 0950-682-5698\r\n";
+  receiptText += "--------------------------------\r\n";
+  receiptText += "Order: " + orderNo + "\r\n";
+  receiptText += dateTime + "\r\n";
+  receiptText += "--------------------------------\r\n";
 
   cart.forEach(i => {
-    receiptText += i.name + " x" + i.qty + "   ₱" + (i.price * i.qty).toFixed(2) + "\n";
+    receiptText += `${i.name} x${i.qty}   PHP ${ (i.price*i.qty).toFixed(2) }\r\n`;
   });
 
-  receiptText += "--------------------------------\n";
-  receiptText += "TOTAL: ₱" + finalTotal.toFixed(2) + "\n";
-  receiptText += "Order Type: " + selectedOrderType + "\n";
-  receiptText += "Details: " + orderExtraInfo + "\n";
-  receiptText += "Payment: " + paymentType + "\n";
-  receiptText += "Cash: ₱" + cashReceived + "\n";
-  receiptText += "Change: ₱" + change + "\n";
-  receiptText += "--------------------------------\n";
-  receiptText += "Thank you!\n\n\n";
+  receiptText += "--------------------------------\r\n";
+  receiptText += "TOTAL: PHP " + finalTotal.toFixed(2) + "\r\n";
+  receiptText += "Order Type: " + selectedOrderType + "\r\n";
+  receiptText += "Details: " + orderExtraInfo + "\r\n";
+  receiptText += "Payment: " + paymentType + "\r\n";
+  receiptText += "Cash: PHP " + cashReceived + "\r\n";
+  receiptText += "Change: PHP " + change + "\r\n";
+  receiptText += "--------------------------------\r\n";
+  receiptText += "Thank you!\r\n\r\n\r\n";
 
-  let encodedText = encodeURIComponent(receiptText);
+  // Use escape instead of encodeURIComponent
+  let encodedText = escape(receiptText);
 
-  // Open intent
+  // Open intent for Bluetooth printing
   window.location.href =
     "intent://sendtext#Intent;" +
     "action=android.intent.action.SEND;" +
@@ -426,7 +427,6 @@ function printReceipt(paymentType, cashReceived = 0, change = 0) {
   renderCart();
   goBack();
 }
-
 // ================= MODAL =================
 function openModal(id){ document.getElementById(id).style.display='block'; document.getElementById('paymentSection').style.display='flex'; }
 function closeModal(id){ document.getElementById(id).style.display='none'; }
