@@ -270,7 +270,7 @@ function renderProducts(list){
   container.innerHTML=list.map(p=>{ const item=cart.find(i=>i.id===p.id); const qty=item?item.qty:0;
     return `<div class="card">
       <img src="${p.image}" alt="${p.name}">
-      <h4>${p.name}</h4>
+      <h5>${p.name}</h5>
       <div style="display:flex;justify-content:space-between;align-items:center;">
         <p>₱${p.price.toFixed(2)}</p>
         ${qty===0?`<i class="fas fa-shopping-cart" onclick="addToCart(${p.id})"></i>`:
@@ -467,7 +467,6 @@ renderProducts(products);
 </script>
 </body>
 </html>
-
 
 
 
