@@ -173,7 +173,7 @@ button.active{background:orange;color:black;}
 
 <div id="cashForm" style="display:none; margin-top:10px;">
 <label><b>Cash Received:</b></label>
-<input type="number" id="cashInput" placeholder="Enter Amount Received" maxlength="5" style="width:100%; font-size: 22px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;">
+<input type="number" id="cashInput" placeholder="" maxlength="5" style="width:100%; font-size: 22px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;">
 <div style="margin-top:10px;">
 <strong>Change: <span id="changeAmount">₱0.00</span></strong>
 <button class="confirm-btn" onclick="confirmCashPayment()">Confirm  Cash Payment</button>
@@ -182,7 +182,7 @@ button.active{background:orange;color:black;}
 
 <div id="cardQR" style="display:none; text-align:center; margin-top:5px;">
 <p>Scan QR to Pay</p>
-<img src="https://github.com/sjosep38/masterkurt/blob/master/img/myqr.jpg?raw=true" width="200">
+<img src="https://github.com/sjosep38/masterkurt/blob/master/img/myqr.jpg?raw=true" width="150">
 <button onclick="simulateCardPayment()" style="padding:10px 20px;background:orange;border:none;border-radius:8px;cursor:pointer;width: 100%;"><b>Confirm  GCash Payment</b></button>
 </div>
 
@@ -467,6 +467,7 @@ renderProducts(products);
 </script>
 </body>
 </html>
+
 
 
 
