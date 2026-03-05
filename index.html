@@ -397,7 +397,7 @@ function printReceipt(paymentType, cashReceived = 0, change = 0) {
   receiptText += "--------------------------------\r\n";
 
   cart.forEach(i => {
-    const lineWidth = 40; // total characters per line
+    const lineWidth = 35; // total characters per line
 
 let nameQty = `${i.name} x${i.qty}`;
 let price = `PHP ${(i.price*i.qty).toFixed(2)}`;
@@ -456,6 +456,7 @@ renderProducts(products);
 </script>
 </body>
 </html>
+
 
 
 
