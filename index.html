@@ -397,7 +397,7 @@ function printReceipt(paymentType, cashReceived = 0, change = 0) {
   receiptText += "--------------------------------\r\n";
 
   cart.forEach(i => {
-    const lineWidth = 35; // total characters per line
+    const lineWidth = 30; // total characters per line
 
 let nameQty = `${i.name} x${i.qty}`;
 let price = `PHP ${(i.price*i.qty).toFixed(2)}`;
@@ -415,7 +415,7 @@ receiptText += `${nameQty}${spaces}${price}\r\n`;
   receiptText += "Details     : " + orderExtraInfo + "\r\n";
   receiptText += "Payment     : " + paymentType + "\r\n";
   receiptText += "Cash        : PHP " + cashReceived + "\r\n";
-  receiptText += "Change       : PHP " + change + "\r\n";
+  receiptText += "Change      : PHP " + change + "\r\n";
   receiptText += "--------------------------------\r\n";
   
   receiptText += "  Thank you for your Purchase!\r\n\r\n\r\n";
@@ -456,6 +456,7 @@ renderProducts(products);
 </script>
 </body>
 </html>
+
 
 
 
