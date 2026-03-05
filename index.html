@@ -409,7 +409,19 @@ receiptText += `${nameQty}${spaces}${price}\r\n`;
   });
 
   receiptText += "--------------------------------\r\n";
-  receiptText += "              TOTAL: PHP " + finalTotal.toFixed(2) + "\r\n";
+  let finalTotal = 1234.5;
+let receiptWidth = 32; // total width of the receipt line
+let totalText = "TOTAL:"; 
+let amountText = "PHP " + finalTotal.toFixed(2);
+
+// Calculate number of spaces needed
+let spaces = receiptWidth - totalText.length - amountText.length;
+if (spaces < 0) spaces = 0; // prevent negative spacing
+
+// Append line with right-aligned amount
+receiptText += totalText + " ".repeat(spaces) + amountText + "\r\n";
+
+console.log(receiptText);
   receiptText += "\r\n";
   receiptText += "Order Type  : " + selectedOrderType + "\r\n";
   receiptText += "Details     : " + orderExtraInfo + "\r\n";
@@ -456,6 +468,7 @@ renderProducts(products);
 </script>
 </body>
 </html>
+
 
 
 
