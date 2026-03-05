@@ -388,9 +388,9 @@ function printReceipt(paymentType, cashReceived = 0, change = 0) {
   let dateTime = now.toLocaleString();
 
   let receiptText = "";
-  receiptText += "MASTER KURT FOODHUB\r\n";
+  receiptText += "    MASTER KURT FOODHUB\r\n";
   receiptText += "2530 Isagani St. Sta Cruz Manila\r\n";
-  receiptText += "Mobile: 0950-682-5698\r\n";
+  receiptText += "Mobile Number: 0950-682-5698\r\n";
   receiptText += "--------------------------------\r\n";
   receiptText += "Order: " + orderNo + "\r\n";
   receiptText += dateTime + "\r\n";
@@ -410,13 +410,16 @@ function printReceipt(paymentType, cashReceived = 0, change = 0) {
   receiptText += "--------------------------------\r\n";
   receiptText += "Thank you for your Purchase!\r\n\r\n\r\n";
 
-    
+
   let printWindow = window.open('', '', 'width=400,height=600');
   printWindow.document.write('<pre>' + receiptText + '</pre>');
   printWindow.document.close();
   printWindow.focus();
   printWindow.print();  // triggers print dialog automatically
   printWindow.close();
+
+
+
   // Use escape instead of encodeURIComponent
   let encodedText = escape(receiptText);
 
@@ -443,5 +446,4 @@ renderProducts(products);
 </script>
 </body>
 </html>
-
 
