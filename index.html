@@ -380,51 +380,65 @@ function simulateCardPayment(){ printReceipt("Card", 0, 0); }
 function goBack(){ closeModal("PaymentModal"); document.getElementById("paymentSection").style.display="none"; selectedPaymentMethod=""; selectedOrderType=""; orderExtraInfo=""; }
 
 // ================= RECEIPT =================
-function printReceipt(paymentType, cashReceived = 0, change = 0) {
-  if (cart.length === 0) return;
+function printReceipt(paymentType,cashReceived=0,change=0){
 
-  let orderNo = "ORD-" + Date.now().toString().slice(-6);
-  let now = new Date();
-  let dateTime = now.toLocaleString();
+if(cart.length===0) return;
 
-  let receiptText = "";
-  receiptText += "MASTER KURT FOODHUB\n";
-  receiptText += "2530a Isagani St. Sta Cruz Manila\n";
-  receiptText += "Mobile: 0950-682-5698\n";
-  receiptText += "--------------------------------\n";
-  receiptText += "Order: " + orderNo + "\n";
-  receiptText += dateTime + "\n";
-  receiptText += "--------------------------------\n";
+let orderNo="ORD-"+Date.now().toString().slice(-6);
+let now=new Date();
+let dateTime=now.toLocaleString();
 
-  cart.forEach(i => {
-    receiptText += i.name + " x" + i.qty + "   ₱" + (i.price * i.qty).toFixed(2) + "\n";
-  });
+let receiptText = "";
+receiptText += "MASTER KURT FOODHUB\n";
+receiptText += "2530a Isagani St. Sta Cruz Manila\n";
+receiptText += "Mobile: 0950-682-5698\n";
+receiptText += "--------------------------------\n";
+receiptText += "Order: "+orderNo+"\n";
+receiptText += dateTime+"\n";
+receiptText += "--------------------------------\n";
 
-  receiptText += "--------------------------------\n";
-  receiptText += "TOTAL: ₱" + finalTotal.toFixed(2) + "\n";
-  receiptText += "Order Type: " + selectedOrderType + "\n";
-  receiptText += "Details: " + orderExtraInfo + "\n";
-  receiptText += "Payment: " + paymentType + "\n";
-  receiptText += "Cash: ₱" + cashReceived + "\n";
-  receiptText += "Change: ₱" + change + "\n";
-  receiptText += "--------------------------------\n";
-  receiptText += "Thank you!\n\n\n";
+cart.forEach(i=>{
+  receiptText += i.name+" x"+i.qty+"   ₱"+(i.price*i.qty).toFixed(2)+"\n";
+});
 
-  let encodedText = encodeURIComponent(receiptText);
+receiptText += "--------------------------------\n";
+receiptText += "TOTAL: ₱"+finalTotal.toFixed(2)+"\n";
+receiptText += "Order Type: "+selectedOrderType+"\n";
+receiptText += "Details: "+orderExtraInfo+"\n";
+receiptText += "Payment: "+paymentType+"\n";
+receiptText += "Cash: ₱"+cashReceived+"\n";
+receiptText += "Change: ₱"+change+"\n";
+receiptText += "--------------------------------\n";
+receiptText += "Thank you!\n\n\n";
 
-  // Open intent
-  window.location.href =
-    "intent://sendtext#Intent;" +
-    "action=android.intent.action.SEND;" +
-    "package=mate.bluetoothprint;" +
-    "S.android.intent.extra.TEXT=" + encodedText + ";" +
-    "type=text/plain;" +
-    "end;" +
-    "browser_fallback_url=https://www.webtonative.com/";
 
-  cart = [];
-  renderCart();
-  goBack();
+// 🔥 SEND TO ANDROID
+if(window.Android){
+    let encodedText = encodeURIComponent(receiptText);
+window.location.href =
+"intent:#Intent;" +
+"action=android.intent.action.SEND;" +
+"type=text/plain;" +
+"package=mate.bluetoothprint;" +
+"S.android.intent.extra.TEXT=" + encodedText + ";" +
+"end;";
+}else{
+    alert("Android interface not found");
+}
+
+let encodedText = encodeURIComponent(receiptText);
+
+window.location.href =
+"intent:#Intent;" +
+"action=android.intent.action.SEND;" +
+"type=text/plain;" +
+"package=mate.bluetoothprint;" +
+"S.android.intent.extra.TEXT=" + encodedText + ";" +
+"end;";
+
+cart=[];
+renderCart();
+goBack();
 }
 
 // ================= MODAL =================
