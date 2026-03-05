@@ -381,49 +381,64 @@ function goBack(){ closeModal("PaymentModal"); document.getElementById("paymentS
 
 // ================= RECEIPT =================
 function printReceipt(paymentType,cashReceived=0,change=0){
+
 if(cart.length===0) return;
+
 let orderNo="ORD-"+Date.now().toString().slice(-6);
-let total="₱"+finalTotal.toFixed(2);
 let now=new Date();
 let dateTime=now.toLocaleString();
-let cartHTML=cart.map(i=>`<div class="item"><span>${i.name} x${i.qty}</span><span>₱${(i.price*i.qty).toFixed(2)}</span></div>`).join("");
 
-let receiptWindow=window.open("","PRINT","width=350,height=800");
-receiptWindow.document.write(`
-<html>
-<head>
-<title>Receipt</title>
-<style>
-body{font-family:monospace;width:330px;margin:4px;font-size:24px;}
-.center{text-align:center;}
-.item{display:flex;justify-content:space-between;margin:4px 0;}
-hr{border:none;border-top:2px dashed black;margin:4px 0;}
-.big{font-size:24px;font-weight:bold;}
-.header{font-size:31px;font-weight:bold;}
-</style>
-</head>
-<body onload="window.print();setTimeout(()=>window.close(),800);">
-<div class="center">
-<div class="header">MASTER KURT FOODHUB</div>
-Address: 2530a Isagani st. Sta Cruz Manila<br>
-Mobile #: 0950-682-5698
-<hr>
-Order : ${orderNo}<br>${dateTime}
-</div>
-<hr><br>${cartHTML}<br><hr>
-<div class="item big"><span>Total</span><span>${total}</span></div>
-<br>
-Type &nbsp;&nbsp;&nbsp;: ${selectedOrderType}<br>
-Details : ${orderExtraInfo}<br>
-Payment : ${paymentType}<br>
-Cash &nbsp;&nbsp;&nbsp;: ₱${cashReceived}<br>
-Change &nbsp;: ₱${change}<hr>
-<div class="center">Thank you for your purchase!</div>
-</body></html>
-`);
-receiptWindow.document.close();
-cart=[]; renderCart(); goBack();
-location.reload();
+let receiptText = "";
+receiptText += "MASTER KURT FOODHUB\n";
+receiptText += "2530a Isagani St. Sta Cruz Manila\n";
+receiptText += "Mobile: 0950-682-5698\n";
+receiptText += "--------------------------------\n";
+receiptText += "Order: "+orderNo+"\n";
+receiptText += dateTime+"\n";
+receiptText += "--------------------------------\n";
+
+cart.forEach(i=>{
+  receiptText += i.name+" x"+i.qty+"   ₱"+(i.price*i.qty).toFixed(2)+"\n";
+});
+
+receiptText += "--------------------------------\n";
+receiptText += "TOTAL: ₱"+finalTotal.toFixed(2)+"\n";
+receiptText += "Order Type: "+selectedOrderType+"\n";
+receiptText += "Details: "+orderExtraInfo+"\n";
+receiptText += "Payment: "+paymentType+"\n";
+receiptText += "Cash: ₱"+cashReceived+"\n";
+receiptText += "Change: ₱"+change+"\n";
+receiptText += "--------------------------------\n";
+receiptText += "Thank you!\n\n\n";
+
+
+// 🔥 SEND TO ANDROID
+if(window.Android){
+    let encodedText = encodeURIComponent(receiptText);
+window.location.href =
+"intent:#Intent;" +
+"action=android.intent.action.SEND;" +
+"type=text/plain;" +
+"package=mate.bluetoothprint;" +
+"S.android.intent.extra.TEXT=" + encodedText + ";" +
+"end;";
+}else{
+    alert("Android interface not found");
+}
+
+let encodedText = encodeURIComponent(receiptText);
+
+window.location.href =
+"intent:#Intent;" +
+"action=android.intent.action.SEND;" +
+"type=text/plain;" +
+"package=mate.bluetoothprint;" +
+"S.android.intent.extra.TEXT=" + encodedText + ";" +
+"end;";
+
+cart=[];
+renderCart();
+goBack();
 }
 
 // ================= MODAL =================
