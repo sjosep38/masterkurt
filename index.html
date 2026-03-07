@@ -33,6 +33,7 @@ body { background:#111; color:white; height:100vh; overflow:hidden; }
 .card h5 { margin:1px 0; }
 .card p { font-weight:bold; color:orange; }
 .card i { font-size:20px; cursor:pointer; }
+ h5 { margin:10px 0; }
 
 /* CART */
 .cart { flex:1; background: linear-gradient(0deg,rgba(34, 190, 195, 1) 0%, rgba(207, 99, 36, 1) 100%); padding:10px; display:flex; flex-direction:column; max-height:640px; min-height:639px; border-radius:15px; margin-top:15px}
@@ -136,8 +137,8 @@ button.active{background:orange;color:black;}
 <span class="close" onclick="closeModal('PaymentModal')"></span>
 <div class="payment" id="paymentSection" style="display:none; flex-direction:column;">
 
-<div id="orderTypeOptions2" style="background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%);padding:10px;  border:none; border-radius:8px; margin-top:10px; font-weight:bold; width:100%;">
-<h4>Order Type</h4>
+<div id="orderTypeOptions" style="background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%);padding:10px;  border:none; border-radius:8px; margin-top:10px; font-weight:bold; width:100%;">
+<h5>Order Type</h5>
 <div id="orderTypeOptions" style="display:flex;flex-direction:rows;gap:5px;margin-bottom:5px; border:none; border-radius:8px; margin-top:10px; font-weight:bold; width:100%;">
 <button onclick="selectOrderType('TakeOut',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:5px; font-weight:bold; width:33%;">🥡 TakeOut</button>
 <button onclick="selectOrderType('DineIn',event)"; style=" padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:5px; font-weight:bold; width:33%;">🍽️ Dinning</button>
@@ -162,8 +163,8 @@ button.active{background:orange;color:black;}
 </div>
 </div>
 
-<div class="PaymentOption" style="display:flex;flex-direction:column;gap:1px; margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; margin-top:10px; font-weight:bold; width:100%;">
-<h4>Payment Option</h4>
+<div class="PaymentOption" style=" margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; margin-top:10px; font-weight:bold; width:100%;">
+<h5>Payment Option</h5>
 <div class="payment-methods">
 <button onclick="selectPayment('Cash', event)">💵 Cash</button>
 <button onclick="selectPayment('Card', event)" >💳 GCash</button>
