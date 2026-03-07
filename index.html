@@ -71,7 +71,7 @@ body { background:#111; color:white; height:100vh; overflow:hidden; }
 .nav-item.active span { transform:scale(1.9); }
 
 .modal { display:none; position:fixed; z-index:999; top:0; width:100%; height:100%;border-radius:8px; background:#111;}
-.modal-content { background:red; margin-top:50px; margin-left:5px; width:100%; border-radius:8px; height:100%; overflow-y:auto; align-items:center; }
+.modal-content { background:#111; margin-top:50px; width:100%; border-radius:8px; height:100%;  padding:10px; overflow-y:auto; align-items:center; }
 .close { float:right; font-size:25px; cursor:pointer; color:black; }
 
 button.active{background:orange;color:black;}
@@ -115,7 +115,7 @@ button.active{background:orange;color:black;}
 <!-- CART MODAL -->
 <div id="logsModal" class="modal">
 <div class="modal-content">
-<span class="close" onclick="closeModal('logsModal')">&times;</span>
+<span class="close" onclick="closeModal('logsModal')"></span>
 <div class="cart">
 <h2>Cart</h2>
 <div class="cart-items" id="cartItems"></div>
@@ -133,7 +133,7 @@ button.active{background:orange;color:black;}
 <!-- PAYMENT MODAL -->
 <div id="PaymentModal" class="modal">
 <div class="modal-content">
-<span class="close" onclick="closeModal('PaymentModal')">&times;</span>
+<span class="close" onclick="closeModal('PaymentModal')"></span>
 <div class="payment" id="paymentSection" style="display:none; flex-direction:column;">
 
 <div id="orderTypeOptions2" style="background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%);padding:10px;  border:none; border-radius:8px; margin-top:10px; font-weight:bold; width:100%;">
@@ -162,7 +162,7 @@ button.active{background:orange;color:black;}
 </div>
 </div>
 
-<div class="PaymentOption" style="display:flex;flex-direction:column;gap:1px;margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; margin-top:10px; font-weight:bold; width:100%;">
+<div class="PaymentOption" style="display:flex;flex-direction:column;gap:1px; margin-bottom:5px;background:linear-gradient(0deg,rgba(183, 232, 97, 0.41) 0%, rgba(184, 184, 184, 1) 49%, rgba(184, 184, 184, 1) 98%); padding:10px; border:none; border-radius:8px; margin-top:10px; font-weight:bold; width:100%;">
 <h4>Payment Option</h4>
 <div class="payment-methods">
 <button onclick="selectPayment('Cash', event)">💵 Cash</button>
