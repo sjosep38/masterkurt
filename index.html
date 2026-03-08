@@ -50,8 +50,9 @@ body { background:#111; color:white; height:100vh; overflow:hidden; }
 .payment-methods { display:flex; gap:10px; justify-content:center; margin-bottom:20px; }
 .payment-methods button { padding:12px 20px; background:#2a2a2a; border:none; border-radius:8px; color:white; cursor:pointer; font-weight:bold; width:100%; }
 .payment-methods button.active { background:orange; color:black; width:100%; }
-.back-btn, .confirm-btn { background:orange; padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%; }
+.back-btn1, .back-btn, .confirm-btn { background:orange; padding:10px; border:none; border-radius:8px; cursor:pointer; margin-top:10px; font-weight:bold; width:100%; }
 .back-btn { background:gray; }
+.back-btn1 { background:GREEN; }
 .confirm-btn { background:orange; }
 
 /* Responsive */
@@ -122,10 +123,12 @@ button.active{background:orange;color:black;}
 <div class="cart-items" id="cartItems"></div>
 <div class="summary">
 <div><span>Subtotal</span><span id="subtotal">₱0.00</span></div>
-<div><span>Discount</span><span id="tax">₱0.00</span></div>
+<div><span>Discount</span><span id="Discount">₱0.00</span></div>
+<div><span>VAT 12%</span><span id="VAT">₱0.00</span></div>
 <div><strong>Total</strong><strong id="total">₱0.00</strong></div>
 </div>
 <button class="checkout-btn" onclick="PaymentModal()">Proceed</button>
+<button class="back-btn1" onclick="applyDiscount()">Apply Discount</button>
 <button class="back-btn" onclick="closeModal('logsModal')">⬅ Back</button>
 </div>
 </div>
@@ -183,14 +186,14 @@ oninput="if(this.value.length>2)this.value=this.value.slice(0,2)">
 <input type="number" id="cashInput" placeholder="" maxlength="5" style="width:100%; font-size: 22px; padding:10px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;" oninput="if(this.value.length>5)this.value=this.value.slice(0,5)">
 <div style="margin-top:10px;">
 <strong>Change: <span id="changeAmount">₱0.00</span></strong>
-<button class="confirm-btn" onclick="confirmCashPayment()">Confirm  Cash Payment</button>
+<button class="confirm-btn" onclick="confirmCashPayment();closeModal('logsModal');location.reload();">Confirm  Cash Payment</button>
 </div>
 </div>
 
 <div id="cardQR" style="display:none; text-align:center; margin-top:5px;">
 <p>Scan QR to Pay</p>
 <img src="https://github.com/sjosep38/masterkurt/blob/master/img/myqr.jpg?raw=true" width="150">
-<button onclick="simulateCardPayment()" style="padding:10px 20px;background:orange;border:none;border-radius:8px;cursor:pointer;width: 100%;"><b>Confirm  GCash Payment</b></button>
+<button onclick="simulateCardPayment();closeModal('logsModal');location.reload();" style="padding:10px 20px;background:orange;border:none;border-radius:8px;cursor:pointer;width: 100%;"><b>Confirm  GCash Payment</b></button>
 </div>
 
 <div class="payment-actions">
@@ -434,6 +437,7 @@ console.log(receiptText);
   receiptText += "Payment     : " + paymentType + "\r\n";
   receiptText += "Cash        : PHP " + cashReceived + "\r\n";
   receiptText += "Change      : PHP " + change + "\r\n";
+ 
   receiptText += "--------------------------------------------------\r\n";
   
   receiptText += "  Thank you for your Purchase!\r\n\r\n\r\n";
@@ -463,7 +467,6 @@ printWindow.document.close();
 printWindow.focus();
 printWindow.print();
 printWindow.close();
-
 
   // Use escape instead of encodeURIComponent
   let encodedText = escape(receiptText);
@@ -508,9 +511,54 @@ fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`,{
 });
 
 }
+let discountEnabled = false;
+let DISCOUNT_RATE = 0;
+
+function applyDiscount() {
+    const type = prompt("Select discount type:\n1 - Senior/PWD (20%)\n2 - Student (5%)\n3 - None");
+
+    if(type === "1"){
+        const pwd = prompt("Enter password for Senior/PWD discount:");
+        if(pwd !== "1234"){ alert("Incorrect password!"); return; }
+        DISCOUNT_RATE = 0.2;
+        discountEnabled = true;
+        alert("Senior/PWD discount applied!");
+    }
+    else if(type === "2"){
+        const pwd = prompt("Enter password for Student discount:");
+        if(pwd !== "1234"){ alert("Incorrect password!"); return; }
+        DISCOUNT_RATE = 0.05;
+        discountEnabled = true;
+        alert("Student discount applied!");
+    }
+    else if(type === "3"){
+        DISCOUNT_RATE = 0;
+        discountEnabled = false;
+        alert("Discount removed.");
+    }
+    else { alert("Invalid selection."); return; }
+
+    updateSummary();
+}
+function updateSummary(){
+    const subtotal = cart.reduce((s,i)=>s+i.price*i.qty,0);
+    const discountAmount = discountEnabled ? subtotal * DISCOUNT_RATE : 0;
+    const tax = subtotal * TAX_RATE;
+    finalTotal = subtotal + tax - discountAmount;
+
+    document.getElementById("subtotal").innerText = `₱${subtotal.toFixed(2)}`;
+    document.getElementById("Discount").innerText = `₱${discountAmount.toFixed(2)}`;
+    document.getElementById("VAT").innerText = `₱${tax.toFixed(2)}`;
+    document.getElementById("total").innerText = `₱${finalTotal.toFixed(2)}`;
+
+    // Update payment modal total if open
+    const paymentTotalEl = document.getElementById("paymentTotal");
+    if(paymentTotalEl) paymentTotalEl.innerText = `₱${finalTotal.toFixed(2)}`;
+}
 </script>
 </body>
 </html>
+
 
 
 
