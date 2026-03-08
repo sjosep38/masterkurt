@@ -154,7 +154,10 @@ button.active{background:orange;color:black;}
 <!-- Dine In Input -->
 <div id="dineInput" style="display:none;">
 <label><b>Customer Number (1-50)</b></label>
-<input id="tableInput" type="number" min="1" max="50"  placeholder="e.g 2" style="width:100%; font-size: 22px; padding:10px;text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;">
+<input id="tableInput" type="number" min="1" max="50" placeholder="e.g 2"
+style="width:100%; font-size:22px; text-align:center; letter-spacing:3px; padding:10px; border-radius:6px; border:none; margin-top:5px;"
+oninput="if(this.value.length>2)this.value=this.value.slice(0,2)">
+
 </div>
 <!-- Delivery Input -->
 <div id="deliveryInput" style="display:none;">
@@ -177,7 +180,7 @@ button.active{background:orange;color:black;}
 
 <div id="cashForm" style="display:none; margin-top:10px;">
 <label><b>Cash Received:</b></label>
-<input type="number" id="cashInput" placeholder="" maxlength="5" style="width:100%; font-size: 22px; padding:10px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;">
+<input type="number" id="cashInput" placeholder="" maxlength="5" style="width:100%; font-size: 22px; padding:10px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;" oninput="if(this.value.length>5)this.value=this.value.slice(0,5)">
 <div style="margin-top:10px;">
 <strong>Change: <span id="changeAmount">₱0.00</span></strong>
 <button class="confirm-btn" onclick="confirmCashPayment()">Confirm  Cash Payment</button>
