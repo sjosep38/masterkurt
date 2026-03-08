@@ -436,12 +436,41 @@ console.log(receiptText);
   receiptText += "  Thank you for your Purchase!\r\n\r\n\r\n";
 
 
-  let printWindow = window.open('', '', 'width=400,height=600');
-  printWindow.document.write('<pre>' + receiptText + '</pre>');
-  printWindow.document.close();
-  printWindow.focus();
-  printWindow.print();  // triggers print dialog automatically
-  printWindow.close();
+let printWindow = window.open('', '', 'width=400,height=600');
+
+printWindow.document.write(`
+<html>
+<head>
+<style>
+body{
+  font-family: monospace;
+  font-size: 30px;
+  width: 300px;
+  margin:0;
+  padding:0;
+}
+pre{
+  font-family: monospace;
+  font-size: 25px;
+  line-height: 1.4;
+}
+@media print{
+  body{
+    margin:0;
+  }
+}
+</style>
+</head>
+<body>
+<pre>${receiptText}</pre>
+</body>
+</html>
+`);
+
+printWindow.document.close();
+printWindow.focus();
+printWindow.print();
+printWindow.close();
 
 
 
