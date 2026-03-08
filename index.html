@@ -186,14 +186,14 @@ oninput="if(this.value.length>2)this.value=this.value.slice(0,2)">
 <input type="number" id="cashInput" placeholder="" maxlength="5" style="width:100%; font-size: 22px; padding:10px; text-align:center; letter-spacing:3px; padding:1px;border-radius:6px;border:none;margin-top:5px;" oninput="if(this.value.length>5)this.value=this.value.slice(0,5)">
 <div style="margin-top:10px;">
 <strong>Change: <span id="changeAmount">₱0.00</span></strong>
-<button class="confirm-btn" onclick="confirmCashPayment();closeModal('logsModal');location.reload();">Confirm  Cash Payment</button>
+<button class="confirm-btn" onclick="confirmCashPayment();closeModal('logsModal')">Confirm  Cash Payment</button>
 </div>
 </div>
 
 <div id="cardQR" style="display:none; text-align:center; margin-top:5px;">
 <p>Scan QR to Pay</p>
 <img src="https://github.com/sjosep38/masterkurt/blob/master/img/myqr.jpg?raw=true" width="150">
-<button onclick="simulateCardPayment();closeModal('logsModal');location.reload();" style="padding:10px 20px;background:orange;border:none;border-radius:8px;cursor:pointer;width: 100%;"><b>Confirm  GCash Payment</b></button>
+<button onclick="simulateCardPayment();closeModal('logsModal')" style="padding:10px 20px;background:orange;border:none;border-radius:8px;cursor:pointer;width: 100%;"><b>Confirm  GCash Payment</b></button>
 </div>
 
 <div class="payment-actions">
