@@ -401,10 +401,10 @@ function printReceipt(paymentType, cashReceived = 0, change = 0) {
   receiptText += "      MASTER KURT FOODHUB\r\n";
   receiptText += "2530 Isagani St. Sta Cruz Manila\r\n";
   receiptText += "  Mobile Number: 0950-682-5698\r\n";
-  receiptText += "--------------------------------------------------\r\n";
+  receiptText += "--------------------------------\r\n";
   receiptText += "Order Slip No: " + orderNo + "\r\n";
   receiptText += dateTime + "\r\n";
-  receiptText += "--------------------------------------------------\r\n";
+  receiptText += "--------------------------------\r\n";
 
   cart.forEach(i => {
     const lineWidth = 32; // total characters per line
@@ -418,7 +418,7 @@ let spaces = ' '.repeat(Math.max(0, lineWidth - nameQty.length - price.length));
 receiptText += `${nameQty}${spaces}${price}\r\n`;
   });
 
-  receiptText += "--------------------------------------------------\r\n";
+  receiptText += "--------------------------------\r\n";
 let receiptWidth = 32; // total width of the receipt line
 let totalText = "TOTAL:"; 
 let amountText = "PHP " + finalTotal.toFixed(2);
@@ -438,7 +438,7 @@ console.log(receiptText);
   receiptText += "Cash        : PHP " + cashReceived + "\r\n";
   receiptText += "Change      : PHP " + change + "\r\n";
  
-  receiptText += "--------------------------------------------------\r\n";
+  receiptText += "--------------------------------\r\n";
   
   receiptText += "  Thank you for your Purchase!\r\n\r\n\r\n";
 	sendReceiptToTelegram(receiptText);
