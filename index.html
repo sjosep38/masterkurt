@@ -311,12 +311,12 @@ footer.site-footer{border-top:1px solid var(--border-color);background:var(--pan
 .footer-bottom{border-top:1px solid var(--border-color);padding:16px 24px;text-align:center;font-size:.75rem;color:var(--text-muted);}
 .footer-bottom .gear{cursor:pointer;opacity:.6;}
 .footer-bottom .gear:hover{opacity:1;color:var(--accent-color);}
-@media (max-width:760px){.footer-inner{grid-template-columns:1fr;}}
+@media (max-width:820px){.footer-inner{grid-template-columns:1fr;gap:26px;}}
 
 /* ════════════════════════════════════════════════════════════
    TOAST
 ════════════════════════════════════════════════════════════ */
-#toast-stack{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:2000;display:flex;flex-direction:column;gap:8px;align-items:center;}
+#toast-stack{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:2000;display:flex;flex-direction:column;gap:8px;align-items:center;max-width:calc(100vw - 32px);}
 .toast{background:var(--panel-bg);border:1px solid var(--border-color);color:var(--text-main);padding:11px 18px;border-radius:9px;font-size:.85rem;font-weight:600;box-shadow:0 12px 30px var(--shadow);display:flex;align-items:center;gap:9px;animation:toast-in .25s ease;}
 @keyframes toast-in{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 .toast.success i{color:var(--success-color);}
@@ -324,9 +324,20 @@ footer.site-footer{border-top:1px solid var(--border-color);background:var(--pan
 .toast.warning i{color:var(--warning-color);}
 
 /* ════════════════════════════════════════════════════════════
-   RESPONSIVE
+   RESPONSIVE — PC / tablet / phone
 ════════════════════════════════════════════════════════════ */
+
+/* ── Tablet (roughly 701px–1024px: iPad portrait & landscape,
+     small laptops) — grid keeps its auto-fill card layout, this
+     tier just tightens spacing a touch. ── */
+@media (min-width:701px) and (max-width:1024px){
+  .hero-inner{gap:34px;}
+  #menu{padding:44px 22px 64px;}
+  .product-grid{gap:16px;}
+}
 @media (min-width:701px){.header-search{display:block;}}
+
+/* ── Phone (≤700px) ── */
 @media (max-width:700px){
   .menu-search-mobile{display:block;}
   .header-inner{padding:12px 16px;}
@@ -335,6 +346,29 @@ footer.site-footer{border-top:1px solid var(--border-color);background:var(--pan
   #cart-drawer{width:100%;max-width:100%;right:-100%;}
   .form-grid2{grid-template-columns:1fr;}
   .option-tiles{grid-template-columns:1fr 1fr;}
+  #menu{padding:36px 16px 56px;}
+  .hero-inner{padding:32px 16px;gap:28px;}
+  .hero-ctas{flex-direction:column;align-items:stretch;}
+  .hero-ctas button{width:100%;}
+  .hero-stats{gap:18px;}
+  /* app-style 2-column menu instead of one big stacked card per row */
+  .product-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .pc-body{padding:10px 10px 11px;gap:6px;}
+  .pc-name{font-size:.86rem;line-height:1.2;}
+  .pc-cat{font-size:.6rem;}
+  .pc-price{font-size:.92rem;}
+  .pc-add,.pc-stepper button{width:32px;height:32px;}
+  .pc-stepper span{font-size:.78rem;}
+  .footer-inner{padding:34px 16px 24px;}
+  .modal-box-body{padding:16px;}
+  .modal-box-head{padding:16px;}
+}
+
+/* ── Very small phones (≤380px) — single-column menu again since
+     two columns get too cramped to read comfortably ── */
+@media (max-width:380px){
+  .product-grid{grid-template-columns:1fr;}
+  .hero h1{font-size:1.8rem;}
 }
 </style>
 </head>
@@ -347,9 +381,9 @@ footer.site-footer{border-top:1px solid var(--border-color);background:var(--pan
     <h1>Connect your store</h1>
     <p>This storefront reads live products straight from your register system's Supabase database. Paste the same Project URL and anon key you used to set up the register, and the shelves will fill themselves.</p>
     <label>Supabase Project URL</label>
-    <input type="text" id="sb-url" placeholder="https://xxxxx.supabase.co" value="https://udanuxcvshmytbtrjnpy.supabase.co" autocomplete="off">
+    <input type="text" id="sb-url" placeholder="https://xxxxx.supabase.co" autocomplete="off">
     <label>Supabase Anon Key</label>
-    <input type="password" id="sb-key" placeholder="eyJhbGciOi..." value="sb_publishable_n6uBE8L5ZBPwd7up7-ZkiA_DZzPD_8N" autocomplete="off">
+    <input type="password" id="sb-key" placeholder="eyJhbGciOi..." autocomplete="off">
     <div class="err" id="connect-err"></div>
     <button class="btn-connect" onclick="connectToSupabase()"><i class="fa-solid fa-plug"></i>&nbsp; Connect Store</button>
     <div class="connect-hint">Credentials are only stored in this browser's local storage.</div>
