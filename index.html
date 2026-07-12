@@ -380,10 +380,10 @@ footer.site-footer{border-top:1px solid var(--border-color);background:var(--pan
     <div class="brand-mark"><i class="fa-solid fa-mug-saucer"></i></div>
     <h1>Connect your store</h1>
     <p>This storefront reads live products straight from your register system's Supabase database. Paste the same Project URL and anon key you used to set up the register, and the shelves will fill themselves.</p>
-    <label STYLE="display:NONE">Supabase Project URL</label>
-    <input type="text" id="sb-url" placeholder="https://xxxxx.supabase.co" STYLE="display:NONE"value="https://udanuxcvshmytbtrjnpy.supabase.co" autocomplete="off">
-    <label STYLE="display:NONE">Supabase Anon Key</label>
-    <input type="password" id="sb-key" placeholder="eyJhbGciOi..." STYLE="display:NONE" value="sb_publishable_n6uBE8L5ZBPwd7up7-ZkiA_DZzPD_8N" autocomplete="off">
+    <label>Supabase Project URL</label>
+    <input type="text" id="sb-url" placeholder="https://xxxxx.supabase.co" autocomplete="off">
+    <label>Supabase Anon Key</label>
+    <input type="password" id="sb-key" placeholder="eyJhbGciOi..." autocomplete="off">
     <div class="err" id="connect-err"></div>
     <button class="btn-connect" onclick="connectToSupabase()"><i class="fa-solid fa-plug"></i>&nbsp; Connect Store</button>
     <div class="connect-hint">Credentials are only stored in this browser's local storage.</div>
@@ -1263,9 +1263,22 @@ function subscribeToOrder(id){
             .on('postgres_changes',{event:'UPDATE',schema:'public',table:'pos_online_orders',filter:'id=eq.'+id},payload=>{
                 lastTrackedOrder=payload.new;
                 renderOrderStatus(payload.new);
-                showToast('Your order status was updated','success');
+                announceOrderStatus(payload.new);
             }).subscribe();
     }catch(e){}
+}
+function announceOrderStatus(o){
+    const readyMsg=o.fulfillment==='delivery'?'Your order is out for delivery!':'Your order is ready for pickup!';
+    const messages={
+        pending:{text:`Order #${o.id} was received.`,type:'info'},
+        confirmed:{text:`Order #${o.id} has been confirmed!`,type:'success'},
+        preparing:{text:`Order #${o.id} is being prepared.`,type:'info'},
+        ready:{text:`Order #${o.id}: ${readyMsg}`,type:'success'},
+        completed:{text:`Order #${o.id} is complete — thank you!`,type:'success'},
+        cancelled:{text:`Order #${o.id} was cancelled.`,type:'danger'},
+    };
+    const m=messages[o.status];
+    if(m)showToast(m.text,m.type);
 }
 const STATUS_STEPS=[
     {key:'pending',label:'Order received',icon:'fa-inbox'},
@@ -1277,6 +1290,7 @@ const STATUS_STEPS=[
 function renderOrderStatus(o){
     const box=document.getElementById('track-result');
     const isCancelled=o.status==='cancelled';
+    const isCompleted=o.status==='completed';
     const readyLabel=o.fulfillment==='delivery'?'Out for delivery':'Ready for pickup';
     const steps=STATUS_STEPS.map(s=>s.key==='ready'?{...s,label:readyLabel}:s);
     const currentIdx=steps.findIndex(s=>s.key===o.status);
@@ -1285,9 +1299,12 @@ function renderOrderStatus(o){
         timelineHtml=`<li class="cancelled"><div class="st-dot"><i class="fa-solid fa-xmark"></i></div><div><div class="st-label">Order cancelled</div><div class="st-time">Please contact the store for details.</div></div></li>`;
     }else{
         timelineHtml=steps.map((s,i)=>{
-            const cls=i<currentIdx?'done':i===currentIdx?'current':'';
-            const icon=i<currentIdx?'fa-check':s.icon;
-            return `<li class="${cls}"><div class="st-dot"><i class="fa-solid ${icon}"></i></div><div><div class="st-label">${s.label}</div>${i===currentIdx?'<div class="st-time">In progress</div>':''}</div></li>`;
+            // Once the order is completed, every step (including the last)
+            // shows as a plain checked-off "done" state — no pulsing dot,
+            // since there's nothing left "in progress".
+            const cls=isCompleted?(i<=currentIdx?'done':''):(i<currentIdx?'done':i===currentIdx?'current':'');
+            const icon=cls==='done'?'fa-check':s.icon;
+            return `<li class="${cls}"><div class="st-dot"><i class="fa-solid ${icon}"></i></div><div><div class="st-label">${s.label}</div>${i===currentIdx&&!isCompleted?'<div class="st-time">In progress</div>':''}</div></li>`;
         }).join('');
     }
     const items=(o.items||[]).map(i=>`<div class="rt-row"><span>${i.qty}x ${escapeHtml(i.name)}</span><span>₱${(i.price*i.qty).toFixed(2)}</span></div>`).join('');
@@ -1299,7 +1316,35 @@ function renderOrderStatus(o){
             <div class="rt-row"><span>Delivery fee</span><span>₱${(o.delivery_fee||0).toFixed(2)}</span></div>
             <div class="rt-row grand" style="border-top:1px dashed var(--border-color);padding-top:8px;margin-top:6px;"><span>Total</span><span>${peso(o.total)}</span></div>
         </div>
-        <button class="btn-block-2" onclick="openTrackModal()" style="margin-top:14px;">Track another order</button>`;
+        <button class="btn-block-2" onclick="openTrackModal()" style="margin-top:14px;">Track another order</button>
+        <button class="btn-block-2" onclick="reorderTrackedOrder()"><i class="fa-solid fa-rotate-right"></i>&nbsp; Order again</button>`;
+}
+async function reorderTrackedOrder(){
+    if(!lastTrackedOrder||!(lastTrackedOrder.items||[]).length)return;
+    let added=0,skipped=[];
+    for(const item of lastTrackedOrder.items){
+        const p=findProduct(item.id);
+        if(!p||p.stock<=0){skipped.push(item.name);continue;}
+        const entry=cart.find(c=>c.id===item.id);
+        const wantQty=item.qty;
+        if(entry){
+            const room=p.stock-entry.qty;
+            if(room<=0){skipped.push(item.name);continue;}
+            entry.qty+=Math.min(wantQty,room);
+        }else{
+            cart.push({id:item.id,qty:Math.min(wantQty,p.stock)});
+        }
+        added++;
+    }
+    persistCart();
+    renderCartBadge();renderCartDrawer();renderProductGrid();renderBrewTicket();
+    closeModal('track-modal');
+    if(added>0){
+        showToast(skipped.length?`Added ${added} item(s) to your cart — ${skipped.join(', ')} unavailable`:`Added ${added} item(s) to your cart`, skipped.length?'warning':'success');
+        openCart();
+    }else{
+        showToast('None of those items are available right now.','danger');
+    }
 }
 
 /* ════════════════════════════════════════════════════════════
