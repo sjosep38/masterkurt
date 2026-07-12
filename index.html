@@ -150,7 +150,7 @@ header.site-header{position:sticky;top:0;z-index:400;background:color-mix(in srg
 .brew-ticket-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px dashed var(--border-color);margin-bottom:14px;}
 .brew-ticket-head .tk-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;}
 .brew-ticket-head .tk-num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.85rem;color:var(--accent-color);}
-.brew-feature-img{width:100%;aspect-ratio:1/1;border-radius:12px;object-fit:cover;background:var(--input-bg);margin-bottom:14px;}
+.brew-feature-img{position:relative;width:100%;aspect-ratio:1/1;border-radius:12px;object-fit:cover;background:var(--input-bg);margin-bottom:14px;}
 .brew-feature-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:4px;}
 .brew-feature-cat{font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;}
 .brew-feature-row{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px dashed var(--border-color);}
@@ -200,6 +200,23 @@ header.site-header{position:sticky;top:0;z-index:400;background:color-mix(in srg
 .pc-stepper button{width:30px;height:38px;background:var(--input-bg);border:none;color:var(--text-main);cursor:pointer;font-size:.85rem;}
 .pc-stepper button:hover{background:var(--accent-color);color:var(--accent-text);}
 .pc-stepper span{width:26px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.85rem;}
+.pc-img-wrap.out-of-stock img{filter:(65%) brightness(.5);}
+.pc-watermark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2;}
+.pc-watermark span{
+    transform:rotate(-16deg);
+    border:2px solid rgba(255,255,255,.85);
+    color:#fff;
+    background:rgba(0,0,0,.45);
+    font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:800;
+    font-size:.72rem;
+    letter-spacing:1.4px;
+    text-transform:uppercase;
+    padding:5px 13px;
+    border-radius:4px;
+    white-space:nowrap;
+    box-shadow:0 4px 12px rgba(0,0,0,.35);
+}
 .empty-state{grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--text-muted);}
 .empty-state i{font-size:2.4rem;margin-bottom:14px;opacity:.5;display:block;}
 
@@ -931,11 +948,12 @@ function renderProductGrid(){
         const isLow=!isOut&&p.stock<=10;
         const qty=cartQtyFor(p.id);
         const safeId=String(p.id).replace(/'/g,"\\'");
-        return `
+		return `
         <div class="product-card">
-            <div class="pc-img-wrap">
+            <div class="pc-img-wrap${isOut?' out-of-stock':''}">
                 ${productImageTag(p)}
-                ${isOut?`<div class="pc-badge out">Out of stock</div>`:isLow?`<div class="pc-badge low">Only ${p.stock} left</div>`:''}
+                ${isOut?`<div class="pc-watermark"><span>Not available</span></div>`:''}
+             <!--   ${isOut?`<div class="pc-badge out">Out of stock</div>`:isLow?`<div class="pc-badge low">Only ${p.stock} left</div>`:''}--> 
             </div>
             <div class="pc-body">
                 <div class="pc-cat">${escapeHtml(p.category||'')}</div>
@@ -971,8 +989,8 @@ function renderBrewTicket(){
     document.getElementById('brew-num').textContent='#'+String(featured.id).slice(-4).padStart(3,'0');
     const safeId=String(featured.id).replace(/'/g,"\\'");
     document.getElementById('brew-feature-content').innerHTML=`
-        <div class="brew-feature-img" style="${featured.image_url?`background-image:url('${featured.image_url}');background-size:cover;background-position:center;`:'display:flex;align-items:center;justify-content:center;font-size:2.4rem;color:var(--text-muted);'}">${featured.image_url?'':'<i class="fa-solid fa-mug-hot"></i>'}</div>
-        <div class="brew-feature-cat">${escapeHtml(featured.category||'')}${featured.sold?' · Bestseller':''}</div>
+        <div class="brew-feature-img" style="${featured.image_url?`background-image:url('${featured.image_url}');background-size:cover;background-position:center;`:'display:flex;align-items:center;justify-content:center;font-size:2.4rem;color:var(--text-muted);'}${featured.stock<=0?'filter:(65%) brightness(9);':''}">${featured.image_url?'':'<i class="fa-solid fa-mug-hot"></i>'}${featured.stock<=0?'<div class="pc-watermark"><span>Not available</span></div>':''}</div>
+		<div class="brew-feature-cat">${escapeHtml(featured.category||'')}${featured.sold?' · Bestseller':''}</div>
         <div class="brew-feature-name">${escapeHtml(featured.name)}</div>
         <div class="brew-feature-row">
             <span class="brew-feature-price">${peso(featured.price)}</span>
