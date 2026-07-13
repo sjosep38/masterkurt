@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title></title>
+<title>Store</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -93,6 +93,7 @@ a{color:inherit;text-decoration:none;}
 .connect-box .brand-mark{width:52px;height:52px;border-radius:14px;background:var(--accent-color);color:var(--accent-text);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px;}
 .connect-box h1{font-family:'Bricolage Grotesque',sans-serif;font-size:1.5rem;margin-bottom:6px;}
 .connect-box p{color:var(--text-muted);font-size:.88rem;margin-bottom:22px;line-height:1.5;}
+.connect-box p code{font-family:'JetBrains Mono',monospace;background:var(--input-bg);padding:1px 5px;border-radius:4px;font-size:.82em;color:var(--text-main);}
 .connect-box label{display:block;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--text-muted);margin:14px 0 6px;}
 .connect-box input{width:100%;background:var(--input-bg);border:1px solid var(--border-color);color:var(--text-main);padding:11px 12px;border-radius:8px;font-size:.9rem;outline:none;}
 .connect-box input:focus{border-color:var(--accent-color);}
@@ -150,7 +151,7 @@ header.site-header{position:sticky;top:0;z-index:400;background:color-mix(in srg
 .brew-ticket-head{display:flex;justify-content:space-between;align-items:center;padding-bottom:14px;border-bottom:1px dashed var(--border-color);margin-bottom:14px;}
 .brew-ticket-head .tk-label{font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:1px;}
 .brew-ticket-head .tk-num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.85rem;color:var(--accent-color);}
-.brew-feature-img{position:relative;width:100%;aspect-ratio:1/1;border-radius:12px;object-fit:cover;background:var(--input-bg);margin-bottom:14px;}
+.brew-feature-img{width:100%;aspect-ratio:1/1;border-radius:12px;object-fit:cover;background:var(--input-bg);margin-bottom:14px;}
 .brew-feature-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:4px;}
 .brew-feature-cat{font-size:.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px;}
 .brew-feature-row{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px dashed var(--border-color);}
@@ -200,23 +201,6 @@ header.site-header{position:sticky;top:0;z-index:400;background:color-mix(in srg
 .pc-stepper button{width:30px;height:38px;background:var(--input-bg);border:none;color:var(--text-main);cursor:pointer;font-size:.85rem;}
 .pc-stepper button:hover{background:var(--accent-color);color:var(--accent-text);}
 .pc-stepper span{width:26px;text-align:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:.85rem;}
-.pc-img-wrap.out-of-stock img{filter:(65%) brightness(.5);}
-.pc-watermark{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:2;}
-.pc-watermark span{
-    transform:rotate(-16deg);
-    border:2px solid rgba(255,255,255,.85);
-    color:#fff;
-    background:rgba(0,0,0,.45);
-    font-family:'Bricolage Grotesque',sans-serif;
-    font-weight:800;
-    font-size:.72rem;
-    letter-spacing:1.4px;
-    text-transform:uppercase;
-    padding:5px 13px;
-    border-radius:4px;
-    white-space:nowrap;
-    box-shadow:0 4px 12px rgba(0,0,0,.35);
-}
 .empty-state{grid-column:1/-1;text-align:center;padding:70px 20px;color:var(--text-muted);}
 .empty-state i{font-size:2.4rem;margin-bottom:14px;opacity:.5;display:block;}
 
@@ -391,20 +375,24 @@ footer.site-footer{border-top:1px solid var(--border-color);background:var(--pan
 </head>
 <body>
 
-<!-- ═══════════ SUPABASE CONNECT SCREEN ═══════════ -->
+<!-- ═══════════ SUPABASE CONNECT SCREEN (store owner only — see the
+     HARDCODED_SB_URL / HARDCODED_SB_KEY setup note in the script below
+     to make sure customers never see this screen) ═══════════ -->
 <div id="connect-screen">
   <div class="connect-box">
     <div class="brand-mark"><i class="fa-solid fa-mug-saucer"></i></div>
-    <h1></h1>
-    <label STYLE="display:NONE">Supabase Project URL</label>
-    <input type="text" id="sb-url" placeholder="https://xxxxx.supabase.co" STYLE="display:NONE"value="https://udanuxcvshmytbtrjnpy.supabase.co" autocomplete="off">
-    <label STYLE="display:NONE">Supabase Anon Key</label>
-    <input type="password" id="sb-key" placeholder="eyJhbGciOi..." STYLE="display:NONE" value="sb_publishable_n6uBE8L5ZBPwd7up7-ZkiA_DZzPD_8N" autocomplete="off">
+    <h1>Connect your store</h1>
+    <p>This is a one-time setup step for the store owner — customers should never see this. Paste your Supabase Project URL and anon key to test the connection here, then copy them into the <code>HARDCODED_SB_URL</code> / <code>HARDCODED_SB_KEY</code> constants near the top of this file's script and re-upload it, so every future visitor connects automatically.</p>
+    <label>Supabase Project URL</label>
+    <input type="text" id="sb-url" placeholder="https://xxxxx.supabase.co" autocomplete="off">
+    <label>Supabase Anon Key</label>
+    <input type="password" id="sb-key" placeholder="eyJhbGciOi..." autocomplete="off">
     <div class="err" id="connect-err"></div>
-    <button class="btn-connect" onclick="connectToSupabase()"><i class="fa-solid fa-plug"></i>&nbsp; Proceed to Order</button>
-    <div class="connect-hint">Credentials are only stored in this browser's local storage.</div>
+    <button class="btn-connect" onclick="connectToSupabase()"><i class="fa-solid fa-plug"></i>&nbsp; Connect Store</button>
+    <div class="connect-hint">Credentials entered here are only saved in this browser's local storage — they won't carry over to your customers' devices.</div>
   </div>
 </div>
+
 <!-- ═══════════ APP ═══════════ -->
 <div id="app">
 
@@ -413,7 +401,7 @@ footer.site-footer{border-top:1px solid var(--border-color);background:var(--pan
       <div class="brand">
         <div class="brand-icon"><i class="fa-solid fa-mug-saucer"></i></div>
         <div>
-          <div class="brand-name" id="store-name-label"></div>
+          <div class="brand-name" id="store-name-label">Store</div>
           <div class="brand-tag" id="store-tag-label">Order Online</div>
         </div>
       </div>
@@ -630,6 +618,18 @@ footer.site-footer{border-top:1px solid var(--border-color);background:var(--pan
 
 <script>
 /* ════════════════════════════════════════════════════════════
+   STORE OWNER SETUP — fill these in once, then re-upload this file.
+   Once both are filled in, customers will NEVER see a connect
+   screen — the storefront connects automatically on every visit.
+   (The anon key is meant to be public/client-side — it's not a
+   secret. Your data stays protected by Supabase Row Level Security
+   policies, not by hiding this key.)
+   Find these under: Supabase Dashboard → Project Settings → API
+════════════════════════════════════════════════════════════ */
+const HARDCODED_SB_URL = '';   // e.g. 'https://xxxxxxxx.supabase.co'
+const HARDCODED_SB_KEY = '';   // e.g. 'eyJhbGciOi...'
+
+/* ════════════════════════════════════════════════════════════
    CONFIG & STATE
 ════════════════════════════════════════════════════════════ */
 const SB_URL_KEY='pos_sb_url', SB_KEY_KEY='pos_sb_key', THEME_KEY='pos_theme', CART_KEY='online_cart_draft', CHECKOUT_DRAFT_KEY='online_checkout_draft';
@@ -716,6 +716,16 @@ async function connectToSupabase(){
     }
 }
 (function tryAutoConnect(){
+    // 1. Hardcoded credentials (set by the store owner above) — this is
+    //    the path every customer takes once configured. No prompt, ever.
+    if(HARDCODED_SB_URL && HARDCODED_SB_KEY){
+        db=window.supabase.createClient(HARDCODED_SB_URL,HARDCODED_SB_KEY);
+        document.getElementById('connect-screen').style.display='none';
+        initApp();
+        return;
+    }
+    // 2. Previously-saved credentials on this specific browser (useful
+    //    while the store owner is testing before hardcoding them above).
     const url=localStorage.getItem(SB_URL_KEY), key=localStorage.getItem(SB_KEY_KEY);
     if(url&&key){
         document.getElementById('sb-url').value=url;
@@ -723,7 +733,10 @@ async function connectToSupabase(){
         db=window.supabase.createClient(url,key);
         document.getElementById('connect-screen').style.display='none';
         initApp();
+        return;
     }
+    // 3. Nobody's set anything up yet — show the connect screen so the
+    //    owner can test their credentials before hardcoding them above.
 })();
 
 /* ════════════════════════════════════════════════════════════
@@ -946,12 +959,11 @@ function renderProductGrid(){
         const isLow=!isOut&&p.stock<=10;
         const qty=cartQtyFor(p.id);
         const safeId=String(p.id).replace(/'/g,"\\'");
-		return `
+        return `
         <div class="product-card">
-            <div class="pc-img-wrap${isOut?' out-of-stock':''}">
+            <div class="pc-img-wrap">
                 ${productImageTag(p)}
-                ${isOut?`<div class="pc-watermark"><span>Not available</span></div>`:''}
-             <!--   ${isOut?`<div class="pc-badge out">Out of stock</div>`:isLow?`<div class="pc-badge low">Only ${p.stock} left</div>`:''}--> 
+                ${isOut?`<div class="pc-badge out">Out of stock</div>`:isLow?`<div class="pc-badge low">Only ${p.stock} left</div>`:''}
             </div>
             <div class="pc-body">
                 <div class="pc-cat">${escapeHtml(p.category||'')}</div>
@@ -987,8 +999,8 @@ function renderBrewTicket(){
     document.getElementById('brew-num').textContent='#'+String(featured.id).slice(-4).padStart(3,'0');
     const safeId=String(featured.id).replace(/'/g,"\\'");
     document.getElementById('brew-feature-content').innerHTML=`
-        <div class="brew-feature-img" style="${featured.image_url?`background-image:url('${featured.image_url}');background-size:cover;background-position:center;`:'display:flex;align-items:center;justify-content:center;font-size:2.4rem;color:var(--text-muted);'}${featured.stock<=0?'filter:(65%) brightness(9);':''}">${featured.image_url?'':'<i class="fa-solid fa-mug-hot"></i>'}${featured.stock<=0?'<div class="pc-watermark"><span>Not available</span></div>':''}</div>
-		<div class="brew-feature-cat">${escapeHtml(featured.category||'')}${featured.sold?' · Bestseller':''}</div>
+        <div class="brew-feature-img" style="${featured.image_url?`background-image:url('${featured.image_url}');background-size:cover;background-position:center;`:'display:flex;align-items:center;justify-content:center;font-size:2.4rem;color:var(--text-muted);'}">${featured.image_url?'':'<i class="fa-solid fa-mug-hot"></i>'}</div>
+        <div class="brew-feature-cat">${escapeHtml(featured.category||'')}${featured.sold?' · Bestseller':''}</div>
         <div class="brew-feature-name">${escapeHtml(featured.name)}</div>
         <div class="brew-feature-row">
             <span class="brew-feature-price">${peso(featured.price)}</span>
